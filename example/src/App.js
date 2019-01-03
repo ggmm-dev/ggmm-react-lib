@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 
-import { Hero, TwoCol, SourceText, Mosaic } from "ggmm-react-lib";
+import logo from "./logo.svg";
+
+import {
+  Hero,
+  NavBar,
+  TwoCol,
+  SourceText,
+  Mosaic,
+  TextHeadline
+} from "ggmm-react-lib";
 
 export default class App extends Component {
   constructor() {
@@ -25,8 +34,20 @@ export default class App extends Component {
     return (
       <div>
         <SourceText
-          types={["logo=(data)", "nav=(data)", "social=(data)"]}
+          types={[
+            "logo=(data)",
+            "nav=(data)",
+            "social=(data)",
+            "type=(center/left/mobile)"
+          ]}
           title="NavBar"
+        />
+
+        <NavBar
+          type="center"
+          logo={logo}
+          nav={this.state.nav}
+          social={this.state.socail}
         />
 
         <SourceText
@@ -113,9 +134,21 @@ export default class App extends Component {
             "headline=(str)",
             "subheadline=(str)",
             "algin=(center/left/right)",
-            "margin=(center)"
+            "margin=(center)",
+            "width=(number %)",
+            "maxWidth=(number w/px)"
           ]}
           title="TextHeadline"
+        />
+
+        <TextHeadline
+          align="center"
+          margin="initial"
+          cat="Cat"
+          width="300px"
+          maxWidth="400px"
+          subheadline="Bacon ipsum dolor amet beef ribs drumstick swine cow brisket, flank pancetta spare ribs strip steak salami turkey ball tip ground round ham turducken."
+          headline="Headline"
         />
 
         <SourceText
