@@ -8,14 +8,50 @@ import {
   TwoCol,
   SourceText,
   Mosaic,
-  TextHeadline
+  Contact,
+  Grid,
+  FullSlider,
+  TextHeadline,
+  ThreeCol
 } from "ggmm-react-lib";
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      threeCol: [],
+      grid: {
+        0: {
+          image: "https://source.unsplash.com/user/williamkarl",
+          content: "Title",
+          link: "https://google.com"
+        },
+        1: {
+          image: "https://source.unsplash.com/user/timmossholder",
+          content: "Title"
+        },
+        2: {
+          image: "https://source.unsplash.com/user/braydenlaw",
+          content: "Title"
+        },
+        3: {
+          image: "https://source.unsplash.com/user/chuttersnap",
+          content: "Title"
+        }
+      },
+      threeCol: {
+        0: {
+          content: "<h2>Headline</h2><p>Descriptive text for each box</p>",
+          image: "https://source.unsplash.com/user/williamkarl"
+        },
+        1: {
+          content: "<h2>Headline</h2><p>Descriptive text for each box</p>",
+          image: "https://source.unsplash.com/user/timmossholder"
+        },
+        2: {
+          content: "<h2>Headline</h2><p>Descriptive text for each box</p>",
+          image: "https://source.unsplash.com/user/braydenlaw"
+        }
+      },
       aData: {
         title: "yolo",
         image: "https://source.unsplash.com/user/williamkarl"
@@ -27,29 +63,103 @@ export default class App extends Component {
       cData: {
         title: "yolo",
         image: "https://source.unsplash.com/user/timmossholder"
+      },
+      nav: {
+        0: {
+          name: "menu-item",
+          link: "/"
+        },
+        1: {
+          name: "menu-item",
+          link: "/"
+        }
+      },
+      social: {
+        0: {
+          type: "facebook",
+          link: "/"
+        },
+        1: {
+          type: "instagram",
+          link: "/"
+        },
+        2: {
+          type: "twitter",
+          link: "/"
+        },
+        3: {
+          type: "youtube",
+          link: "/"
+        },
+        4: {
+          type: "linkedin",
+          link: "/"
+        },
+        5: {
+          type: "email",
+          link: "tyler@ggmm.io"
+        }
       }
     };
   }
   render() {
     return (
       <div>
+        <link
+          rel="stylesheet"
+          href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"
+          integrity="sha384-87DrmpqHRiY8hPLIr7ByqhPIywuSsjuQAfMXAE0sMUpY3BM7nXjf+mLIUSvhDArs"
+          crossOrigin="anonymous"
+        />
+
         <SourceText
           types={[
             "logo=(data)",
             "nav=(data)",
+            "navColor=(str)",
             "social=(data)",
-            "type=(center/left/mobile)"
+            "type=(center/left/mobile)",
+            "padding=(number w/px)",
+            "logoWidth=(number w/px)",
+            "iconColor=(str)"
           ]}
           title="NavBar"
         />
-
+        <SourceText types={["type=(left)"]} title="Navbar" />
         <NavBar
+          backgroundColor="whitesmoke"
+          type="left"
+          logo={logo}
+          navColor="gray"
+          logoWidth="50px"
+          iconColor="gray"
+          padding="10px"
+          nav={this.state.nav}
+          social={this.state.social}
+        />
+        <SourceText types={["type=(center)"]} title="Navbar" />
+        <NavBar
+          backgroundColor="#444"
           type="center"
           logo={logo}
+          logoWidth="50px"
+          iconColor="whitesmoke"
+          padding="10px"
           nav={this.state.nav}
-          social={this.state.socail}
+          navColor="whitesmoke"
+          social={this.state.social}
         />
-
+        <SourceText types={["type=(mobile)"]} title="Navbar" />
+        <NavBar
+          backgroundColor="#fab420"
+          type="mobile"
+          logo={logo}
+          logoWidth="50px"
+          iconColor="gray"
+          padding="10px"
+          nav={this.state.nav}
+          social={this.state.social}
+        />
         <SourceText
           types={[
             "headline=(str)",
@@ -77,12 +187,12 @@ export default class App extends Component {
         />
         <SourceText
           types={[
-            "height=(str with px)",
+            "height=(str)",
             "left=(image/imageCover/text)",
             "right=(image/imageCover/text)",
             "leftContent=(data)",
             "rightContent=(data)",
-            "type=(full/container)",
+            "fullWidth=(boolean)",
             "ratio=(half/one-third)"
           ]}
           title="TwoCol"
@@ -96,17 +206,29 @@ export default class App extends Component {
           right="imageCover"
           rightAlt="Alt Tag"
           rightContent="https://source.unsplash.com/user/druks"
-          type="full"
+          fullWidth={true}
           ratio="half"
         />
-
         <SourceText
-          types={["data=(data)", "type=(image/icons/boxed)"]}
+          types={[
+            "data=(data)",
+            "textAlign=(align)",
+            "imageHeight=(str)",
+            "fullWidth=(boolean)",
+            "text=(boolean)",
+            "type=(imageCover/icons/boxed)"
+          ]}
           title="ThreeCol"
         />
-
+        <ThreeCol
+          fullWidth={false}
+          textAlign="center"
+          type="imageCover"
+          imageHeight="300px"
+          text={true}
+          data={this.state.threeCol}
+        />
         <SourceText types={["data=(data)"]} title="Logo Grid" />
-
         <SourceText
           types={[
             "aData=(data)",
@@ -118,7 +240,6 @@ export default class App extends Component {
           ]}
           title="Mosaic"
         />
-
         <Mosaic
           aData={this.state.aData}
           bData={this.state.bData}
@@ -127,7 +248,6 @@ export default class App extends Component {
           overlay={true}
           gridPadding="10px"
         />
-
         <SourceText
           types={[
             "cat=(str)",
@@ -140,24 +260,57 @@ export default class App extends Component {
           ]}
           title="TextHeadline"
         />
-
         <TextHeadline
           align="center"
-          margin="initial"
+          margin="auto"
           cat="Cat"
-          width="300px"
+          width="500px"
           maxWidth="400px"
           subheadline="Bacon ipsum dolor amet beef ribs drumstick swine cow brisket, flank pancetta spare ribs strip steak salami turkey ball tip ground round ham turducken."
           headline="Headline"
         />
-
         <SourceText
-          types={["margin=(full/padded)", "data=(data)", "text=(boolean)"]}
+          types={[
+            "fullWidth=(boolean)",
+            "gridGap(str)",
+            "height=(str)",
+            "columns=(str)",
+            "overaly=(boolean)",
+            "data=(data)",
+            "text=(boolean)"
+          ]}
           title="Grid"
         />
-
-        <SourceText types={["data=(data)"]} title="Carousel" />
-        <SourceText types={["data=(data)"]} title="FullSlider" />
+        <Grid
+          data={this.state.grid}
+          columns="2"
+          gridGap="10px"
+          height="400px"
+          overlay={true}
+          fullWidth={true}
+          text={true}
+        />
+        <SourceText
+          types={[
+            "data=(data)",
+            "dots=(boolean)",
+            "infinite=(boolean)",
+            "speed=(number)",
+            "slidesToShow=(number)",
+            "slidesToScroll=(number)",
+            "height=(number)"
+          ]}
+          title="FullSlider"
+        />
+        <FullSlider
+          data={this.state.grid}
+          dots={true}
+          infinite={true}
+          speed="500"
+          slidesToShow={1}
+          slidesToScroll={1}
+          height="600px"
+        />
         <SourceText
           types={[
             "type=(sideImage)",
@@ -168,7 +321,7 @@ export default class App extends Component {
           ]}
           title="Contact"
         />
-
+        <Contact image="https://source.unsplash.com/random" />
         <SourceText
           types={[
             "type=(simple/nav)",

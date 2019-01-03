@@ -10,8 +10,8 @@ import pkg from "./package.json";
 
 export default {
   input: "src/index.js",
-  external: ["styled-components"],
-  globals: { "styled-components": "styled" },
+  external: ["styled-components", "react-burger-menu", "react-jotform-embed"],
+  globals: { "styled-components": "styled", "react-burger-menu": "slide" },
   output: [
     {
       file: pkg.main,

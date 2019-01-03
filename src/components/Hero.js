@@ -96,6 +96,7 @@ export default class Hero extends Component {
         p {
           margin: 0;
           width: 100%;
+          padding-bottom: 30px;
           font-size: 1.3em;
         }
       `;
@@ -104,7 +105,13 @@ export default class Hero extends Component {
         <Intro>
           <h1>{props.headline}</h1>
           <p>{props.subheadline}</p>
-          <a href={props.buttonUrl}>{props.buttonTitle}</a>
+          <a
+            style={{ margin: "0 auto" }}
+            className="btn"
+            href={props.buttonUrl}
+          >
+            {props.buttonTitle}
+          </a>
         </Intro>
       );
     }

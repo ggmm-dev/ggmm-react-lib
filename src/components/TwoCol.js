@@ -77,17 +77,11 @@ export default class TwoCol extends Component {
     }
   }
   render() {
-    let containerWidth = "100%";
-    if (this.props.type === "container") {
-      containerWidth = "90%";
-    }
-
     const Columns = styled.div`
       align-items: ${this.props.alignItems}
       display: flex;
       flex-wrap: wrap;
-      width: ${containerWidth};
-      margin: 0 auto;
+      ${this.props.fullWidth ? "width: 100%" : "width: 90%; margin: 0 auto"};
     `;
 
     return (

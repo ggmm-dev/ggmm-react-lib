@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
+import React, { Component } from "react";
+import styled from "styled-components";
 
 export default class Mosaic extends Component {
   renderA() {
-    const props = this.props
+    const props = this.props;
 
     const Block = styled.div`
       background: url(${props.aData.image}) center / cover;
@@ -25,18 +25,18 @@ export default class Mosaic extends Component {
         color: white;
         translateY(-50%);
       }
-    `
+    `;
 
     return (
       <Block>
-        {props.overlay && <div className='overlay' />}
-        <div className='title'>{props.aData.title}</div>
+        {props.overlay && <div className="overlay" />}
+        <div className="title">{props.aData.title}</div>
       </Block>
-    )
+    );
   }
 
   renderB() {
-    const props = this.props
+    const props = this.props;
 
     const Block = styled.div`
       background: url(${props.bData.image}) center / cover;
@@ -58,18 +58,18 @@ export default class Mosaic extends Component {
         text-align: center;
         translateY(-50%);
       }
-    `
+    `;
 
     return (
       <Block>
-        {props.overlay && <div className='overlay' />}
-        <div className='title'>{props.bData.title}</div>
+        {props.overlay && <div className="overlay" />}
+        <div className="title">{props.bData.title}</div>
       </Block>
-    )
+    );
   }
 
   renderC() {
-    const props = this.props
+    const props = this.props;
 
     const Block = styled.div`
       background: url(${props.cData.image}) center / cover;
@@ -91,30 +91,30 @@ export default class Mosaic extends Component {
         text-align: center;
         translateY(-50%);
       }
-    `
+    `;
 
     return (
       <Block>
-        {props.overlay && <div className='overlay' />}
-        <div className='title'>{props.cData.title}</div>
+        {props.overlay && <div className="overlay" />}
+        <div className="title">{props.cData.title}</div>
       </Block>
-    )
+    );
   }
   render() {
-    const props = this.props
+    const props = this.props;
 
     const Container = styled.div`
       display: grid;
       grid-gap: ${props.gridPadding}
       height: ${props.height}
       grid-template-areas: 'a b' 'a c';
-    `
+    `;
     return (
       <Container>
         {this.renderA()}
         {this.renderB()}
         {this.renderC()}
       </Container>
-    )
+    );
   }
 }
