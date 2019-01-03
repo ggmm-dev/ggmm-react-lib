@@ -1,12 +1,24 @@
 import React, { Component } from "react";
 
-import { Hero, TwoCol, SourceText } from "ggmm-react-lib";
+import { Hero, TwoCol, SourceText, Mosaic } from "ggmm-react-lib";
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      threeCol: []
+      threeCol: [],
+      aData: {
+        title: "yolo",
+        image: "https://source.unsplash.com/user/williamkarl"
+      },
+      bData: {
+        title: "yolo",
+        image: "https://source.unsplash.com/user/braydenlaw"
+      },
+      cData: {
+        title: "yolo",
+        image: "https://source.unsplash.com/user/timmossholder"
+      }
     };
   }
   render() {
@@ -79,9 +91,20 @@ export default class App extends Component {
             "aData=(data)",
             "bData=(data)",
             "cData=(data)",
-            "layout=(reverse)"
+            "layout=(reverse)",
+            "height=(number w/px)",
+            "gridPadding=(number w/px)"
           ]}
           title="Mosaic"
+        />
+
+        <Mosaic
+          aData={this.state.aData}
+          bData={this.state.bData}
+          cData={this.state.cData}
+          height="700px"
+          overlay={true}
+          gridPadding="10px"
         />
 
         <SourceText
