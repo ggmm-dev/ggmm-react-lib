@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import _ from "lodash";
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import _ from 'lodash'
+import Editor from './Editor'
 
 export default class Grid extends Component {
   renderGrid() {
-    const props = this.props;
+    const props = this.props
     if (props.data) {
       return _.map(props.data, grid => {
         const Grid = styled.div`
@@ -22,38 +23,48 @@ export default class Grid extends Component {
               position: relative;
               z-index: 1;
             }
-          `,
-          Overlay = styled.div`
+          `
+
+        const Overlay = styled.div`
             position: absolute;
             top: 0;
             height: 100%;
             width: 100%;
             background: rgba(0, 0, 0, 0.5);
             z-index: 0;
-          `;
+          `
         return (
           <Grid>
             <div
-              className="title"
+              className='title'
               dangerouslySetInnerHTML={{ __html: grid.content }}
             />
 
             {props.overlay && <Overlay />}
           </Grid>
-        );
-      });
+        )
+      })
     }
   }
   render() {
-    const props = this.props,
-      gridTotal = Object.keys(props.data).length,
-      Container = styled.div`
+    const props = this.props
+
+    const gridTotal = Object.keys(props.data).length
+
+    const Container = styled.div`
         display: grid;
+        position: relative;
         grid-template-columns: repeat(${props.columns}, 1fr);
         grid-gap: ${props.gridGap};
 
-        ${this.props.fullWidth ? "width: 100%" : "width: 90%; margin: 0 auto"};
-      `;
-    return <Container>{this.renderGrid()}</Container>;
+        ${this.props.fullWidth ? 'width: 100%' : 'width: 90%; margin: 0 auto'};
+      `
+    return (
+      <Container>
+        {' '}
+        {this.props.editor && <Editor />}
+        {this.renderGrid()}
+      </Container>
+    )
   }
 }

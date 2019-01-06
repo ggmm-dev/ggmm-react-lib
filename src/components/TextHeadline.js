@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import Editor from './Editor'
 
 export default class TextHeadline extends Component {
   render() {
     const props = this.props
 
     const Text = styled.div`
+      position: relative;
       text-align: ${props.align};
       max-width: ${props.maxWidth};
       width: ${props.width};
@@ -26,6 +28,8 @@ export default class TextHeadline extends Component {
     `
     return (
       <Text>
+        {this.props.editor && <Editor />}
+
         <h3>{props.cat}</h3>
         <h1>{props.headline}</h1>
         <p>{props.subheadline}</p>

@@ -175,6 +175,7 @@ export default class App extends Component {
           title="Hero"
         />
         <Hero
+          editor={true}
           type="image" //video or image
           headline="Headline"
           subheadline="Subheadline"
@@ -198,6 +199,7 @@ export default class App extends Component {
           title="TwoCol"
         />
         <TwoCol
+          editor={true}
           alignItems="center"
           height="500px" //container height
           left="imageCover"
@@ -221,6 +223,7 @@ export default class App extends Component {
           title="ThreeCol"
         />
         <ThreeCol
+          editor={true}
           fullWidth={false}
           textAlign="center"
           type="imageCover"
@@ -241,6 +244,7 @@ export default class App extends Component {
           title="Mosaic"
         />
         <Mosaic
+          editor={true}
           aData={this.state.aData}
           bData={this.state.bData}
           cData={this.state.cData}
@@ -261,6 +265,7 @@ export default class App extends Component {
           title="TextHeadline"
         />
         <TextHeadline
+          editor={true}
           align="center"
           margin="auto"
           cat="Cat"
@@ -282,6 +287,7 @@ export default class App extends Component {
           title="Grid"
         />
         <Grid
+          editor={true}
           data={this.state.grid}
           columns="2"
           gridGap="10px"
@@ -303,6 +309,7 @@ export default class App extends Component {
           title="FullSlider"
         />
         <FullSlider
+          editor={true}
           data={this.state.grid}
           dots={true}
           infinite={true}
