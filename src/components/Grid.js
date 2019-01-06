@@ -62,7 +62,7 @@ export default class Grid extends Component {
     return (
       <Container>
         {' '}
-        {this.props.editor && <Editor />}
+        {this.props.editor && <Editor enableIcon={this.props.enableIcon} />}
         {this.renderGrid()}
       </Container>
     )

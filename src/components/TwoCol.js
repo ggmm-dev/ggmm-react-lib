@@ -88,7 +88,7 @@ export default class TwoCol extends Component {
 
     return (
       <Columns>
-        {this.props.editor && <Editor />}
+        {this.props.editor && <Editor enableIcon={this.props.enableIcon} />}
 
         {this.renderLeft()}
         {this.renderRight()}

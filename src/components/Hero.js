@@ -132,7 +132,7 @@ export default class Hero extends Component {
 
     return (
       <Hero>
-        {this.props.editor && <Editor />}
+        {this.props.editor && <Editor enableIcon={this.props.enableIcon} />}
         {this.renderBackground()}
       </Hero>
     )
