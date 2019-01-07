@@ -53,7 +53,7 @@ export default class ThreeCol extends Component {
     return (
       <Container>
         {this.props.editor && (
-          <Editor id={this.props.id} enableIcon={this.props.enableIcon} />
+          <Editor enableIcon={this.props.enableIcon(this.props.id} />
         )}
 
         <Flex>{this.renderLayout()}</Flex>
