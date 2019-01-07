@@ -12,6 +12,7 @@ export default class TextHeadline extends Component {
       max-width: ${props.maxWidth};
       width: ${props.width};
       margin: ${props.margin};
+      padding: ${props.padding} 0px;
       h3 {
         text-transform: uppercase;
         letter-spacing: 3px;
