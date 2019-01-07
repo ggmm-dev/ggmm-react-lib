@@ -28,7 +28,7 @@ export default class TextHeadline extends Component {
     `
     return (
       <Text>
-        {this.props.editor && <Editor enableIcon={this.props.enableIcon(this.props.id} />}
+        {this.props.editor && <Editor enableIcon={this.props.enableIcon(this.props.id)} />}
 
         <h3>{props.cat}</h3>
         <h1>{props.headline}</h1>
