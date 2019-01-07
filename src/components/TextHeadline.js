@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import Editor from './Editor'
+import React, { Component } from "react";
+import styled from "styled-components";
+import Editor from "./Editor";
 
 export default class TextHeadline extends Component {
   render() {
-    const props = this.props
+    const props = this.props;
 
     const Text = styled.div`
       position: relative;
@@ -25,15 +25,16 @@ export default class TextHeadline extends Component {
       p {
         padding-top: 10px;
       }
-    `
+    `;
     return (
       <Text>
-        {this.props.editor && <Editor enableIcon={this.props.enableIcon(this.props.id)} />}
-
+        {this.props.editor && (
+          <Editor id={this.props.id} enableIcon={this.props.enableIcon} />
+        )}
         <h3>{props.cat}</h3>
         <h1>{props.headline}</h1>
         <p>{props.subheadline}</p>
       </Text>
-    )
+    );
   }
 }

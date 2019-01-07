@@ -27,7 +27,7 @@ export default class FullSlider extends Component {
     return (
       <div style={{ position: "relative" }}>
         {this.props.editor && (
-          <Editor enableIcon={this.props.enableIcon(this.props.id)} />
+          <Editor id={this.props.id} enableIcon={this.props.enableIcon} />
         )}
 
         <link

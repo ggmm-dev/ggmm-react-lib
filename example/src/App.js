@@ -102,6 +102,11 @@ export default class App extends Component {
       }
     };
   }
+
+  enableIcon = name => event => {
+    console.log(name);
+  };
+
   render() {
     return (
       <div>
@@ -127,6 +132,8 @@ export default class App extends Component {
         />
         <SourceText types={["type=(left)"]} title="Navbar" />
         <NavBar
+          // editor={true}
+          // enableIcon={this.enableIcon()}
           backgroundColor="whitesmoke"
           type="left"
           logo={logo}
@@ -139,6 +146,8 @@ export default class App extends Component {
         />
         <SourceText types={["type=(center)"]} title="Navbar" />
         <NavBar
+          // editor={true}
+          // enableIcon={this.enableIcon()}
           backgroundColor="#444"
           type="center"
           logo={logo}
@@ -151,6 +160,8 @@ export default class App extends Component {
         />
         <SourceText types={["type=(mobile)"]} title="Navbar" />
         <NavBar
+          // editor={true}
+          // enableIcon={this.enableIcon()}
           backgroundColor="#fab420"
           type="mobile"
           logo={logo}
@@ -175,7 +186,9 @@ export default class App extends Component {
           title="Hero"
         />
         <Hero
+          id={1010}
           editor={true}
+          enableIcon={this.enableIcon}
           type="image" //video or image
           headline="Headline"
           subheadline="Subheadline"
@@ -199,7 +212,9 @@ export default class App extends Component {
           title="TwoCol"
         />
         <TwoCol
+          id={1010}
           editor={true}
+          enableIcon={this.enableIcon()}
           alignItems="center"
           height="500px" //container height
           left="imageCover"
@@ -223,7 +238,9 @@ export default class App extends Component {
           title="ThreeCol"
         />
         <ThreeCol
+          id={1010}
           editor={true}
+          enableIcon={this.enableIcon()}
           fullWidth={false}
           textAlign="center"
           type="imageCover"
@@ -244,7 +261,9 @@ export default class App extends Component {
           title="Mosaic"
         />
         <Mosaic
+          id={1010}
           editor={true}
+          enableIcon={this.enableIcon()}
           aData={this.state.aData}
           bData={this.state.bData}
           cData={this.state.cData}
@@ -265,7 +284,9 @@ export default class App extends Component {
           title="TextHeadline"
         />
         <TextHeadline
+          id={1010}
           editor={true}
+          enableIcon={this.enableIcon()}
           align="center"
           margin="auto"
           cat="Cat"
@@ -287,7 +308,9 @@ export default class App extends Component {
           title="Grid"
         />
         <Grid
+          id={1010}
           editor={true}
+          enableIcon={this.enableIcon()}
           data={this.state.grid}
           columns="2"
           gridGap="10px"
@@ -309,7 +332,9 @@ export default class App extends Component {
           title="FullSlider"
         />
         <FullSlider
+          id={1010}
           editor={true}
+          enableIcon={this.enableIcon()}
           data={this.state.grid}
           dots={true}
           infinite={true}
@@ -328,7 +353,11 @@ export default class App extends Component {
           ]}
           title="Contact"
         />
-        <Contact image="https://source.unsplash.com/random" />
+        <Contact
+          enableIcon={this.enableIcon()}
+          edit={true}
+          image="https://source.unsplash.com/random"
+        />
         <SourceText
           types={[
             "type=(simple/nav)",

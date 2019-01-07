@@ -61,9 +61,8 @@ export default class Grid extends Component {
     `;
     return (
       <Container>
-        {" "}
         {this.props.editor && (
-          <Editor enableIcon={this.props.enableIcon(this.props.id)} />
+          <Editor id={this.props.id} enableIcon={this.props.enableIcon} />
         )}
         {this.renderGrid()}
       </Container>
