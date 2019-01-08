@@ -5,6 +5,9 @@ const Icon = styled.div`
   top: 10px;
   left: 10px;
   z-index: 9;
+  i {
+    color: #00eadb;
+  }
 `;
 
 export default class Editor extends Component {
@@ -13,11 +16,25 @@ export default class Editor extends Component {
       <Icon>
         <i
           style={{
-            color: "#00EADB",
             marginRight: "20px"
           }}
           className="far fa-trash-alt"
           onClick={this.props.deleteBlock(this.props.id)}
+        />
+        <i
+          style={{
+            marginRight: "20px"
+          }}
+          className="fal fa-long-arrow-up"
+          onClick={this.props.blockUp(this.props.id)}
+        />
+        <i
+          style={{
+            transform: "rotate(180deg)",
+            marginRight: "20px"
+          }}
+          className="fal fa-long-arrow-up"
+          onClick={this.props.blockDown(this.props.id)}
         />
         <i
           style={{

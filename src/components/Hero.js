@@ -134,7 +134,7 @@ export default class Hero extends Component {
     return (
       <Hero>
         {this.props.editor && (
-          <Editor
+          <Editor blockUp={this.props.blockUp} blockDown={this.props.blockDown}
             id={this.props.id}
             deleteBlock={this.props.deleteBlock}
             enableIcon={this.props.enableIcon}

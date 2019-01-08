@@ -111,6 +111,14 @@ export default class App extends Component {
     console.log(name);
   };
 
+  blockUp = name => event => {
+    console.log(name);
+  };
+
+  blockDown = name => event => {
+    console.log(name);
+  };
+
   render() {
     return (
       <div>
@@ -139,6 +147,8 @@ export default class App extends Component {
           // editor={true}
           // enableIcon={this.enableIcon()}
           deleteBlock={this.deleteBlock()}
+          blockUp={this.blockUp()}
+          blockDown={this.blockDown()}
           backgroundColor="whitesmoke"
           type="left"
           logo={logo}
@@ -154,6 +164,8 @@ export default class App extends Component {
           // editor={true}
           // enableIcon={this.enableIcon()}
           deleteBlock={this.deleteBlock()}
+          blockUp={this.blockUp()}
+          blockDown={this.blockDown()}
           backgroundColor="#444"
           type="center"
           logo={logo}
@@ -169,6 +181,8 @@ export default class App extends Component {
           // editor={true}
           // enableIcon={this.enableIcon()}
           deleteBlock={this.deleteBlock()}
+          blockUp={this.blockUp()}
+          blockDown={this.blockDown()}
           backgroundColor="#fab420"
           type="mobile"
           logo={logo}
@@ -197,6 +211,8 @@ export default class App extends Component {
           editor={true}
           enableIcon={this.enableIcon}
           deleteBlock={this.deleteBlock()}
+          blockUp={this.blockUp()}
+          blockDown={this.blockDown()}
           type="image" //video or image
           headline="Headline"
           subheadline="Subheadline"
@@ -224,6 +240,8 @@ export default class App extends Component {
           editor={true}
           enableIcon={this.enableIcon()}
           deleteBlock={this.deleteBlock()}
+          blockUp={this.blockUp()}
+          blockDown={this.blockDown()}
           alignItems="center"
           height="500px" //container height
           left="imageCover"
@@ -251,6 +269,8 @@ export default class App extends Component {
           editor={true}
           enableIcon={this.enableIcon()}
           deleteBlock={this.deleteBlock()}
+          blockUp={this.blockUp()}
+          blockDown={this.blockDown()}
           fullWidth={false}
           textAlign="center"
           type="imageCover"
@@ -275,6 +295,8 @@ export default class App extends Component {
           editor={true}
           enableIcon={this.enableIcon()}
           deleteBlock={this.deleteBlock()}
+          blockUp={this.blockUp()}
+          blockDown={this.blockDown()}
           aData={this.state.aData}
           bData={this.state.bData}
           cData={this.state.cData}
@@ -299,6 +321,8 @@ export default class App extends Component {
           editor={true}
           enableIcon={this.enableIcon()}
           deleteBlock={this.deleteBlock()}
+          blockUp={this.blockUp()}
+          blockDown={this.blockDown()}
           align="center"
           margin="auto"
           cat="Cat"
@@ -324,6 +348,8 @@ export default class App extends Component {
           editor={true}
           enableIcon={this.enableIcon()}
           deleteBlock={this.deleteBlock()}
+          blockUp={this.blockUp()}
+          blockDown={this.blockDown()}
           data={this.state.grid}
           columns="2"
           gridGap="10px"
@@ -348,6 +374,8 @@ export default class App extends Component {
           id={1010}
           editor={true}
           deleteBlock={this.deleteBlock()}
+          blockUp={this.blockUp()}
+          blockDown={this.blockDown()}
           enableIcon={this.enableIcon()}
           data={this.state.grid}
           dots={true}
@@ -370,6 +398,8 @@ export default class App extends Component {
         <Contact
           enableIcon={this.enableIcon()}
           deleteBlock={this.deleteBlock()}
+          blockUp={this.blockUp()}
+          blockDown={this.blockDown()}
           edit={true}
           image="https://source.unsplash.com/random"
         />

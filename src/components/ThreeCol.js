@@ -55,6 +55,8 @@ export default class ThreeCol extends Component {
       <Container>
         {this.props.editor && (
           <Editor
+            blockUp={this.props.blockUp}
+            blockDown={this.props.blockDown}
             id={this.props.id}
             deleteBlock={this.props.deleteBlock}
             enableIcon={this.props.enableIcon}
