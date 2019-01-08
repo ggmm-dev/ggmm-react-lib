@@ -107,6 +107,10 @@ export default class App extends Component {
     console.log(name);
   };
 
+  deleteBlock = name => event => {
+    console.log(name);
+  };
+
   render() {
     return (
       <div>
@@ -134,6 +138,7 @@ export default class App extends Component {
         <NavBar
           // editor={true}
           // enableIcon={this.enableIcon()}
+          deleteBlock={this.deleteBlock()}
           backgroundColor="whitesmoke"
           type="left"
           logo={logo}
@@ -148,6 +153,7 @@ export default class App extends Component {
         <NavBar
           // editor={true}
           // enableIcon={this.enableIcon()}
+          deleteBlock={this.deleteBlock()}
           backgroundColor="#444"
           type="center"
           logo={logo}
@@ -162,6 +168,7 @@ export default class App extends Component {
         <NavBar
           // editor={true}
           // enableIcon={this.enableIcon()}
+          deleteBlock={this.deleteBlock()}
           backgroundColor="#fab420"
           type="mobile"
           logo={logo}
@@ -189,6 +196,7 @@ export default class App extends Component {
           id={1010}
           editor={true}
           enableIcon={this.enableIcon}
+          deleteBlock={this.deleteBlock()}
           type="image" //video or image
           headline="Headline"
           subheadline="Subheadline"
@@ -215,6 +223,7 @@ export default class App extends Component {
           id={1010}
           editor={true}
           enableIcon={this.enableIcon()}
+          deleteBlock={this.deleteBlock()}
           alignItems="center"
           height="500px" //container height
           left="imageCover"
@@ -241,6 +250,7 @@ export default class App extends Component {
           id={1010}
           editor={true}
           enableIcon={this.enableIcon()}
+          deleteBlock={this.deleteBlock()}
           fullWidth={false}
           textAlign="center"
           type="imageCover"
@@ -264,6 +274,7 @@ export default class App extends Component {
           id={1010}
           editor={true}
           enableIcon={this.enableIcon()}
+          deleteBlock={this.deleteBlock()}
           aData={this.state.aData}
           bData={this.state.bData}
           cData={this.state.cData}
@@ -287,6 +298,7 @@ export default class App extends Component {
           id={1010}
           editor={true}
           enableIcon={this.enableIcon()}
+          deleteBlock={this.deleteBlock()}
           align="center"
           margin="auto"
           cat="Cat"
@@ -311,6 +323,7 @@ export default class App extends Component {
           id={1010}
           editor={true}
           enableIcon={this.enableIcon()}
+          deleteBlock={this.deleteBlock()}
           data={this.state.grid}
           columns="2"
           gridGap="10px"
@@ -334,6 +347,7 @@ export default class App extends Component {
         <FullSlider
           id={1010}
           editor={true}
+          deleteBlock={this.deleteBlock()}
           enableIcon={this.enableIcon()}
           data={this.state.grid}
           dots={true}
@@ -355,6 +369,7 @@ export default class App extends Component {
         />
         <Contact
           enableIcon={this.enableIcon()}
+          deleteBlock={this.deleteBlock()}
           edit={true}
           image="https://source.unsplash.com/random"
         />

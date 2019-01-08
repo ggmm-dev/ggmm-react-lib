@@ -114,7 +114,11 @@ export default class Mosaic extends Component {
     return (
       <Container>
         {this.props.editor && (
-          <Editor id={this.props.id} enableIcon={this.props.enableIcon} />
+          <Editor
+            id={this.props.id}
+            deleteBlock={this.props.deleteBlock}
+            enableIcon={this.props.enableIcon}
+          />
         )}
         {this.renderA()}
         {this.renderB()}

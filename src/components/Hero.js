@@ -127,13 +127,18 @@ export default class Hero extends Component {
     const Hero = styled.div`
       position: relative;
       width: 100%;
+      padding: ${this.props.padding} 0px;
       height: ${this.props.height + "vh"};
     `;
 
     return (
       <Hero>
         {this.props.editor && (
-          <Editor id={this.props.id} enableIcon={this.props.enableIcon} />
+          <Editor
+            id={this.props.id}
+            deleteBlock={this.props.deleteBlock}
+            enableIcon={this.props.enableIcon}
+          />
         )}
         {this.renderBackground()}
       </Hero>

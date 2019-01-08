@@ -18,16 +18,24 @@ export default class FullSlider extends Component {
     const props = this.props;
 
     const settings = {
-      dots: props.dots,
-      infinite: props.infinite,
-      speed: props.speed,
-      slidesToShow: props.slidesToShow,
-      slidesToScroll: props.slidesToScroll
-    };
+        dots: props.dots,
+        infinite: props.infinite,
+        speed: props.speed,
+        slidesToShow: props.slidesToShow,
+        slidesToScroll: props.slidesToScroll
+      },
+      MainSlide = styled.div`
+        padding: ${props.padding} 0px;
+        position: relative;
+      `;
     return (
-      <div style={{ position: "relative" }}>
+      <MainSlide>
         {this.props.editor && (
-          <Editor id={this.props.id} enableIcon={this.props.enableIcon} />
+          <Editor
+            id={this.props.id}
+            deleteBlock={this.props.deleteBlock}
+            enableIcon={this.props.enableIcon}
+          />
         )}
 
         <link
@@ -42,7 +50,7 @@ export default class FullSlider extends Component {
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
         <Slider {...settings}>{this.renderSlides()}</Slider>
-      </div>
+      </MainSlide>
     );
   }
 }

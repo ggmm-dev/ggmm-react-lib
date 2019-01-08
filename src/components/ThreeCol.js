@@ -40,6 +40,7 @@ export default class ThreeCol extends Component {
 
     const Container = styled.div`
       position: relative;
+      padding: ${props.padding} 0px;
       ${props.fullWidth ? "width: 100%" : "width: 90%; margin: 0 auto"}
     `;
 
@@ -53,7 +54,11 @@ export default class ThreeCol extends Component {
     return (
       <Container>
         {this.props.editor && (
-          <Editor id={this.props.id} enableIcon={this.props.enableIcon} />
+          <Editor
+            id={this.props.id}
+            deleteBlock={this.props.deleteBlock}
+            enableIcon={this.props.enableIcon}
+          />
         )}
 
         <Flex>{this.renderLayout()}</Flex>

@@ -54,6 +54,7 @@ export default class Grid extends Component {
     const Container = styled.div`
       display: grid;
       position: relative;
+      padding: ${props.padding} 0px;
       grid-template-columns: repeat(${props.columns}, 1fr);
       grid-gap: ${props.gridGap};
 
@@ -62,7 +63,11 @@ export default class Grid extends Component {
     return (
       <Container>
         {this.props.editor && (
-          <Editor id={this.props.id} enableIcon={this.props.enableIcon} />
+          <Editor
+            id={this.props.id}
+            deleteBlock={this.props.deleteBlock}
+            enableIcon={this.props.enableIcon}
+          />
         )}
         {this.renderGrid()}
       </Container>

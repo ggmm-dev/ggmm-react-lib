@@ -82,6 +82,7 @@ export default class TwoCol extends Component {
       align-items: ${this.props.alignItems}
       display: flex;
       flex-wrap: wrap;
+      padding: ${this.props.padding} 0px;
       position: relative;
       ${this.props.fullWidth ? "width: 100%" : "width: 90%; margin: 0 auto"};
     `;
@@ -89,7 +90,11 @@ export default class TwoCol extends Component {
     return (
       <Columns>
         {this.props.editor && (
-          <Editor id={this.props.id} enableIcon={this.props.enableIcon} />
+          <Editor
+            id={this.props.id}
+            deleteBlock={this.props.deleteBlock}
+            enableIcon={this.props.enableIcon}
+          />
         )}
 
         {this.renderLeft()}

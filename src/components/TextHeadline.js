@@ -30,7 +30,11 @@ export default class TextHeadline extends Component {
     return (
       <Text>
         {this.props.editor && (
-          <Editor id={this.props.id} enableIcon={this.props.enableIcon} />
+          <Editor
+            id={this.props.id}
+            deleteBlock={this.props.deleteBlock}
+            enableIcon={this.props.enableIcon}
+          />
         )}
         <h3>{props.cat}</h3>
         <h1>{props.headline}</h1>
