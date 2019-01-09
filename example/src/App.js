@@ -373,6 +373,7 @@ export default class App extends Component {
         <FullSlider
           id={1010}
           editor={true}
+          imageType="static"
           deleteBlock={this.deleteBlock()}
           blockUp={this.blockUp()}
           blockDown={this.blockDown()}
