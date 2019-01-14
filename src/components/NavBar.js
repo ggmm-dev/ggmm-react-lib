@@ -4,6 +4,86 @@ import _ from "lodash";
 
 import { slide as MobileBurger } from "react-burger-menu";
 
+const MobileMenu = styled.div`
+    .bm-item.closer {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      cursor: pointer;
+      color: white;
+      font-size: 24px;
+    }
+    img {
+      filter: brightnees;
+    }
+    .bm-overlay {
+      top: 0;
+      left: 0;
+    }
+
+    .bm-menu-wrap {
+      top: 0;
+      left: 0;
+    }
+
+    .bm-burger-button {
+      display: none;
+    }
+    .bm-menu {
+      transition: 0.4s;
+      background: #111;
+      overflow: hidden !important;
+      h4 {
+        color: white;
+        text-transform: capitalize;
+        margin: 0;
+        font-family: $worksans;
+        padding: 8px 0;
+        font-size: 30px;
+        font-weight: 400;
+      }
+      nav.bm-item-list {
+        padding: 70px 0 0 50px;
+      }
+      a {
+        color: white;
+        padding: 10px;
+      }
+    }
+  `,
+  Nav = styled.div`
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  `,
+  Burger = styled.div`
+    .burger {
+      display: block;
+    }
+    @media screen and (min-width: 1024px) {
+      .burger {
+        display: none !important;
+      }
+    }
+  `,
+  SocialBar = styled.div`
+    width: inherit;
+    align-items: center;
+    display: none;
+    @media screen and (min-width: 1024px) {
+      display: flex !important;
+    }
+  `,
+  Menu = styled.div`
+    display: none;
+    align-items: center;
+    @media screen and (min-width: 1024px) {
+      display: flex !important;
+    }
+  `;
+
 export default class NavBar extends Component {
   constructor() {
     super();
@@ -27,50 +107,6 @@ export default class NavBar extends Component {
   }
 
   renderMobile() {
-    const MobileMenu = styled.div`
-      .bm-item.closer {
-        position: absolute;
-        top: 20px;
-        right: 40px;
-        cursor: pointer;
-        color: white;
-        font-size: 24px;
-      }
-      img {
-        filter: brightnees;
-      }
-      .bm-overlay {
-        top: 0;
-        left: 0;
-      }
-
-      .bm-menu-wrap {
-        top: 0;
-        left: 0;
-      }
-
-      .bm-menu {
-        transition: 0.4s;
-        background: #111;
-        overflow: hidden !important;
-        h4 {
-          color: white;
-          text-transform: capitalize;
-          margin: 0;
-          font-family: $worksans;
-          padding: 8px 0;
-          font-size: 30px;
-          font-weight: 400;
-        }
-        nav.bm-item-list {
-          padding: 70px 0 0 50px;
-        }
-        a {
-          color: white;
-          padding: 10px;
-        }
-      }
-    `;
     return (
       <MobileMenu>
         <MobileBurger
@@ -170,38 +206,6 @@ export default class NavBar extends Component {
 
   renderNav() {
     const props = this.props,
-      Nav = styled.div`
-        width: 90%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      `,
-      Burger = styled.div`
-        .burger {
-          display: block;
-        }
-        @media screen and (min-width: 1024px) {
-          .burger {
-            display: none !important;
-          }
-        }
-      `,
-      SocialBar = styled.div`
-        width: inherit;
-        align-items: center;
-        display: none;
-        @media screen and (min-width: 1024px) {
-          display: flex !important;
-        }
-      `,
-      Menu = styled.div`
-        display: none;
-        align-items: center;
-        @media screen and (min-width: 1024px) {
-          display: flex !important;
-        }
-      `,
       Logo = styled.div`
         img {
           width: ${props.logoWidth};
