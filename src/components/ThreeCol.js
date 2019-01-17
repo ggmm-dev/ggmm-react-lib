@@ -19,7 +19,10 @@ export default class ThreeCol extends Component {
           background: url(${box.image}) center / cover;
         }
         .icon-image {
-          height: ${props.imageHeight};
+          margin-bottom: 30px;
+          img {
+            max-height: ${props.imageHeight};
+          }
         }
         @media screen and (min-width: 1024px) {
           width: ${100 / boxTotal - 1 + "%"};
