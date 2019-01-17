@@ -18,36 +18,39 @@ export default class Hero extends Component {
     };
 
     const VimeoWrapper = styled.div`
-      background-color: black;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-      overflow: hidden;
-    `;
-
-    const ImageWrapper = styled.div`
-      background-image: url(${props.imageUrl});
-      position: relative;
-      z-index: 0;
-      width: 100%;
-      height: 100%;
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
-    `;
-
-    const Overlay = styled.div`
-      position: absolute;
-      top: 0;
-      height: 100%;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 3;
-    `;
+        background-color: black;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+        overflow: hidden;
+      `,
+      ImageWrapper = styled.div`
+        background-image: url(${props.imageUrl});
+        position: relative;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+      `,
+      ColorWrapper = styled.div`
+        height: 100%;
+        width: 100%;
+        background-color: ${props.bgColor};
+      `,
+      Overlay = styled.div`
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 3;
+      `;
 
     if (props.type === "video") {
       return (
@@ -75,6 +78,12 @@ export default class Hero extends Component {
           {props.overlay && <Overlay />} {this.renderCopy()}
         </ImageWrapper>
       );
+    } else if (props.type === "color") {
+      return (
+        <ColorWrapper>
+          {props.overlay && <Overlay />} {this.renderCopy()}
+        </ColorWrapper>
+      );
     }
   }
 
@@ -83,7 +92,8 @@ export default class Hero extends Component {
 
     const Intro = styled.div`
       margin: 0 auto;
-      width: 260px;
+      width: 90%;
+      max-width: 480px;
       height: 100%;
       position: relative;
       z-index: 5;
@@ -96,14 +106,10 @@ export default class Hero extends Component {
       h1 {
         margin: 0;
         width: 100%;
-        font-weight: 200;
-        font-size: 3em;
       }
       p {
         margin: 0;
         width: 100%;
-        padding-bottom: 30px;
-        font-size: 1.3em;
       }
     `;
     if (props) {
@@ -132,15 +138,18 @@ export default class Hero extends Component {
     `;
 
     return (
-      <Hero>
+      <Hero className={this.props.className}>
         {this.props.editor && (
-          <Editor blockUp={this.props.blockUp} blockDown={this.props.blockDown}
+          <Editor
+            blockUp={this.props.blockUp}
+            blockDown={this.props.blockDown}
             id={this.props.id}
             deleteBlock={this.props.deleteBlock}
             enableIcon={this.props.enableIcon}
           />
         )}
         {this.renderBackground()}
+        {this.props.children}
       </Hero>
     );
   }

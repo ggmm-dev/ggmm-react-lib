@@ -11,19 +11,21 @@ export default class ThreeCol extends Component {
       const boxTotal = Object.keys(props.data).length;
 
       const Box = styled.div`
-        img {
-          width: 100%;
-        }
+        ${props.boxStyles}
         .box-image {
           height: ${props.imageHeight};
           background: url(${box.image}) center / cover;
+          img {
+            width: 100%;
+          }
         }
         .icon-image {
-          margin-bottom: 30px;
           img {
+            margin-bottom: 30px;
             max-height: ${props.imageHeight};
           }
         }
+
         @media screen and (min-width: 1024px) {
           width: ${100 / boxTotal - 1 + "%"};
         }
@@ -42,11 +44,12 @@ export default class ThreeCol extends Component {
       if (props.type === "icon") {
         return (
           <Box>
-            <div className="icon-image" />
-            <img src={box.image} alt="Icon Image" />
-            {props.text && (
-              <div dangerouslySetInnerHTML={{ __html: box.content }} />
-            )}
+            <div className="icon-image">
+              <img className="icon-svg" src={box.image} alt="Icon Image" />
+              {props.text && (
+                <div dangerouslySetInnerHTML={{ __html: box.content }} />
+              )}
+            </div>
           </Box>
         );
       }
@@ -56,6 +59,7 @@ export default class ThreeCol extends Component {
     const props = this.props;
 
     const Container = styled.div`
+      ${props.containerStyles}
       position: relative;
       padding: ${props.padding} 0px;
       ${props.fullWidth ? "width: 100%" : "width: 90%; margin: 0 auto"}
@@ -79,6 +83,7 @@ export default class ThreeCol extends Component {
             enableIcon={this.props.enableIcon}
           />
         )}
+        <h2>{this.props.title}</h2>
 
         <Flex>{this.renderLayout()}</Flex>
       </Container>

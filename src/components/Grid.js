@@ -32,16 +32,24 @@ export default class Grid extends Component {
           .grid-image {
             background-image: url(${grid.image});
             background-size: cover;
+            height: ${this.props.height};
+          }
+          .icon-image,
+          .grid-image {
             position: relative;
             width: 100%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            height: ${this.props.height};
+            justify-content: ${this.props.align};
+          }
+          .icon-image {
+            img {
+              padding: ${this.props.imagePadding};
+              max-height: ${this.props.imageHeight};
+            }
           }
           .under-text {
             padding: 15px 0 30px;
-            font-size: 1.5em;
           }
           .title {
             color: white;
@@ -58,16 +66,31 @@ export default class Grid extends Component {
           background: rgba(0, 0, 0, 0.5);
           z-index: 0;
         `;
-        return (
-          <Grid>
-            <div className="grid-image">
-              {this.renderOverlayText(grid.content)}
+        if (this.props.type === "cover") {
+          return (
+            <Grid>
+              <div className="grid-image">
+                {this.renderOverlayText(grid.content)}
 
-              {props.overlay && <Overlay />}
-            </div>
-            {this.renderUnderText(grid.content)}
-          </Grid>
-        );
+                {props.overlay && <Overlay />}
+              </div>
+              {this.renderUnderText(grid.content)}
+            </Grid>
+          );
+        }
+        if (this.props.type === "icon") {
+          return (
+            <Grid>
+              <div className="icon-image">
+                <img src={grid.image} alt="Grid Image" />
+                {this.renderOverlayText(grid.content)}
+
+                {props.overlay && <Overlay />}
+              </div>
+              {this.renderUnderText(grid.content)}
+            </Grid>
+          );
+        }
       });
     }
   }
@@ -77,26 +100,32 @@ export default class Grid extends Component {
     const gridTotal = Object.keys(props.data).length;
 
     const Container = styled.div`
-      display: grid;
-      position: relative;
-      padding: ${props.padding} 0px;
-      grid-template-columns: repeat(${props.columns}, 1fr);
-      grid-gap: ${props.gridGap};
-
-      ${this.props.fullWidth ? "width: 100%" : "width: 90%; margin: 0 auto"};
-    `;
+        ${this.props.fullWidth ? "width: 100%" : "width: 90%; margin: 0 auto"};
+      `,
+      Wrapper = styled.div`
+        ${props.containerStyles}
+        display: grid;
+        position: relative;
+        padding: ${props.padding} 0px;
+        grid-template-columns: repeat(${props.columns}, 1fr);
+        grid-gap: ${props.gridGap};
+      `;
     return (
       <Container>
-        {this.props.editor && (
-          <Editor
-            blockUp={this.props.blockUp}
-            blockDown={this.props.blockDown}
-            id={this.props.id}
-            deleteBlock={this.props.deleteBlock}
-            enableIcon={this.props.enableIcon}
-          />
-        )}
-        {this.renderGrid()}
+        <h2 style={{ width: "100%" }}>{this.props.title}</h2>
+
+        <Wrapper>
+          {this.props.editor && (
+            <Editor
+              blockUp={this.props.blockUp}
+              blockDown={this.props.blockDown}
+              id={this.props.id}
+              deleteBlock={this.props.deleteBlock}
+              enableIcon={this.props.enableIcon}
+            />
+          )}
+          {this.renderGrid()}
+        </Wrapper>
       </Container>
     );
   }
