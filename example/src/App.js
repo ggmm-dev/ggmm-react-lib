@@ -339,7 +339,8 @@ export default class App extends Component {
             "columns=(str)",
             "overaly=(boolean)",
             "data=(data)",
-            "text=(boolean)"
+            "text=(boolean)",
+            "textType=(overlay, under)"
           ]}
           title="Grid"
         />
@@ -355,8 +356,9 @@ export default class App extends Component {
           gridGap="10px"
           height="400px"
           overlay={true}
-          fullWidth={true}
+          fullWidth={false}
           text={true}
+          textType="under"
         />
         <SourceText
           types={[

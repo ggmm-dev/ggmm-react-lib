@@ -4,20 +4,45 @@ import _ from "lodash";
 import Editor from "./Editor";
 
 export default class Grid extends Component {
+  renderOverlayText = content => {
+    const props = this.props;
+    if (props.textType === "overlay") {
+      return (
+        <div className="title" dangerouslySetInnerHTML={{ __html: content }} />
+      );
+    }
+  };
+
+  renderUnderText = content => {
+    const props = this.props;
+    if (props.textType === "under") {
+      return (
+        <div
+          className="under-text"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      );
+    }
+  };
   renderGrid() {
     const props = this.props;
     if (props.data) {
       return _.map(props.data, grid => {
         const Grid = styled.div`
-          background-image: url(${grid.image});
-          background-size: cover;
-          height: ${this.props.height};
-          width: 100%;
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-position: center;
+          .grid-image {
+            background-image: url(${grid.image});
+            background-size: cover;
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: ${this.props.height};
+          }
+          .under-text {
+            padding: 15px 0 30px;
+            font-size: 1.5em;
+          }
           .title {
             color: white;
             position: relative;
@@ -35,12 +60,12 @@ export default class Grid extends Component {
         `;
         return (
           <Grid>
-            <div
-              className="title"
-              dangerouslySetInnerHTML={{ __html: grid.content }}
-            />
+            <div className="grid-image">
+              {this.renderOverlayText(grid.content)}
 
-            {props.overlay && <Overlay />}
+              {props.overlay && <Overlay />}
+            </div>
+            {this.renderUnderText(grid.content)}
           </Grid>
         );
       });
