@@ -18,6 +18,9 @@ export default class ThreeCol extends Component {
           height: ${props.imageHeight};
           background: url(${box.image}) center / cover;
         }
+        .icon-image {
+          height: ${props.imageHeight};
+        }
         @media screen and (min-width: 1024px) {
           width: ${100 / boxTotal - 1 + "%"};
         }
@@ -27,6 +30,17 @@ export default class ThreeCol extends Component {
         return (
           <Box>
             <div className="box-image" />
+            {props.text && (
+              <div dangerouslySetInnerHTML={{ __html: box.content }} />
+            )}
+          </Box>
+        );
+      }
+      if (props.type === "icon") {
+        return (
+          <Box>
+            <div className="icon-image" />
+            <img src={box.image} alt="Icon Image" />
             {props.text && (
               <div dangerouslySetInnerHTML={{ __html: box.content }} />
             )}

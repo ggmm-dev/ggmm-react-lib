@@ -273,7 +273,7 @@ export default class App extends Component {
           blockDown={this.blockDown()}
           fullWidth={false}
           textAlign="center"
-          type="imageCover"
+          type="icon"
           imageHeight="300px"
           text={true}
           data={this.state.threeCol}
