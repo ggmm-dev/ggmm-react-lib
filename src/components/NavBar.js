@@ -216,7 +216,9 @@ export default class NavBar extends Component {
         <Nav>
           <div className="left">
             <Logo>
-              <img className={props.logoClass} src={props.logo} alt="Logo" />
+              <a href="/">
+                <img className={props.logoClass} src={props.logo} alt="Logo" />
+              </a>
             </Logo>
           </div>
           <div style={{ display: "flex" }} className="right">
@@ -236,7 +238,9 @@ export default class NavBar extends Component {
         <Nav>
           <div className="left">
             <Logo>
-              <img className={props.logoClass} src={props.logo} alt="Logo" />
+              <a href="/">
+                <img className={props.logoClass} src={props.logo} alt="Logo" />
+              </a>
             </Logo>
           </div>
           <div className="center">
@@ -275,6 +279,7 @@ export default class NavBar extends Component {
   render() {
     const Container = styled.div`
       width: 100%;
+      ${this.props.fixed && "position: fixed"}
       background: ${this.props.backgroundColor};
       padding: ${this.props.padding};
     `;

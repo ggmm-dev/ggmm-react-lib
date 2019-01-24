@@ -152,6 +152,7 @@ export default class App extends Component {
           backgroundColor="whitesmoke"
           type="left"
           logo={logo}
+          logoClass="test"
           navColor="gray"
           logoWidth="50px"
           iconColor="gray"
