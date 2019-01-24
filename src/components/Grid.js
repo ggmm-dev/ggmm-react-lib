@@ -30,7 +30,7 @@ export default class Grid extends Component {
       return _.map(props.data, grid => {
         const Grid = styled.div`
           .grid-image {
-            background-image: url(${grid.image});
+            background-image: url('${grid.image}');
             background-size: cover;
             height: ${this.props.height};
           }
@@ -94,39 +94,54 @@ export default class Grid extends Component {
       });
     }
   }
-  render() {
-    const props = this.props;
 
-    const gridTotal = Object.keys(props.data).length;
-
-    const Container = styled.div`
+  renderContent() {
+    const props = this.props,
+      gridTotal = Object.keys(props.data).length,
+      Container = styled.div`
+        padding: ${props.padding} 0px;
         ${this.props.fullWidth ? "width: 100%" : "width: 90%; margin: 0 auto"};
+        h2 {
+          padding: 40px;
+          text-align: ${props.textAlign};
+        }
       `,
       Wrapper = styled.div`
         ${props.containerStyles}
         display: grid;
         position: relative;
-        padding: ${props.padding} 0px;
-        grid-template-columns: repeat(${props.columns}, 1fr);
+        max-width: ${props.maxWidth};
+        ${props.maxWidth && "margin: 0 auto;"}
+        grid-template-columns: repeat(${props.mobileColumns}, 1fr);
         grid-gap: ${props.gridGap};
+        @media screen and (min-width: 768px) {
+          grid-template-columns: repeat(${props.tabletColumns}, 1fr);
+        }
+        @media screen and (min-width: 1024px) {
+          grid-template-columns: repeat(${props.columns}, 1fr);
+        }
       `;
-    return (
-      <Container>
-        <h2 style={{ width: "100%" }}>{this.props.title}</h2>
-
-        <Wrapper>
-          {this.props.editor && (
-            <Editor
-              blockUp={this.props.blockUp}
-              blockDown={this.props.blockDown}
-              id={this.props.id}
-              deleteBlock={this.props.deleteBlock}
-              enableIcon={this.props.enableIcon}
-            />
-          )}
-          {this.renderGrid()}
-        </Wrapper>
-      </Container>
-    );
+    if (props) {
+      return (
+        <Container>
+          {props.title && <h2 style={{ width: "100%" }}>{this.props.title}</h2>}
+          <Wrapper>
+            {this.props.editor && (
+              <Editor
+                blockUp={this.props.blockUp}
+                blockDown={this.props.blockDown}
+                id={this.props.id}
+                deleteBlock={this.props.deleteBlock}
+                enableIcon={this.props.enableIcon}
+              />
+            )}
+            {this.renderGrid()}
+          </Wrapper>
+        </Container>
+      );
+    }
+  }
+  render() {
+    return <div>{this.renderContent()}</div>;
   }
 }

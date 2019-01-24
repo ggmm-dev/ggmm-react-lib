@@ -10,13 +10,21 @@ export default class TwoCol extends Component {
         background-image: url(${props.leftContent});
         background-size: cover;
         height: ${this.props.height};
-        width: 50%;
+        width: 100%;
+        position: relative;
         background-position: center;
+        @media screen and (min-width: 1024px) {
+          width: 50%;
+        }
       `;
       return <Column />;
     } else if (props.left === "image") {
       const Column = styled.div`
         width: 50%;
+        position: relative;
+        @media screen and (min-width: 1024px) {
+          width: 50%;
+        }
         img {
           width: 100%;
         }
@@ -28,7 +36,11 @@ export default class TwoCol extends Component {
       );
     } else if (props.left === "text") {
       const Column = styled.div`
-        width: 50%;
+        width: 100%;
+        position: relative;
+        @media screen and (min-width: 1024px) {
+          width: 50%;
+        }
         div {
           padding: 50px;
         }
@@ -44,16 +56,23 @@ export default class TwoCol extends Component {
     const props = this.props;
     if (props.right === "imageCover") {
       const Column = styled.div`
+        position: relative;
         background-image: url(${props.rightContent});
         background-size: cover;
         height: ${this.props.height};
-        width: 50%;
+        width: 100%;
         background-position: center;
+        @media screen and (min-width: 1024px) {
+          width: 50%;
+        }
       `;
       return <Column />;
     } else if (props.right === "image") {
       const Column = styled.div`
-        width: 50%;
+        width: 100%;
+        @media screen and (min-width: 1024px) {
+          width: 50%;
+        }
         img {
           width: 100%;
         }
@@ -65,7 +84,10 @@ export default class TwoCol extends Component {
       );
     } else if (props.right === "text") {
       const Column = styled.div`
-        width: 50%;
+        width: 100%;
+        @media screen and (min-width: 1024px) {
+          width: 50%;
+        }
         div {
           padding: 50px;
         }
@@ -78,29 +100,39 @@ export default class TwoCol extends Component {
     }
   }
   render() {
-    const Columns = styled.div`
-      align-items: ${this.props.alignItems}
-      display: flex;
-      flex-wrap: wrap;
+    const props = this.props,
+      Columns = styled.div`
+
+      background-color: ${this.props.bgColor}
+
       padding: ${this.props.padding} 0px;
       position: relative;
       ${this.props.fullWidth ? "width: 100%" : "width: 90%; margin: 0 auto"};
-    `;
+    `,
+      Wrapper = styled.div`
+        align-items: ${this.props.alignItems};
+        display: flex;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        max-width: ${props.maxWidth};
+      `;
 
     return (
       <Columns>
-        {this.props.editor && (
-          <Editor
-            blockUp={this.props.blockUp}
-            blockDown={this.props.blockDown}
-            id={this.props.id}
-            deleteBlock={this.props.deleteBlock}
-            enableIcon={this.props.enableIcon}
-          />
-        )}
+        <Wrapper>
+          {this.props.editor && (
+            <Editor
+              blockUp={this.props.blockUp}
+              blockDown={this.props.blockDown}
+              id={this.props.id}
+              deleteBlock={this.props.deleteBlock}
+              enableIcon={this.props.enableIcon}
+            />
+          )}
 
-        {this.renderLeft()}
-        {this.renderRight()}
+          {this.renderLeft()}
+          {this.renderRight()}
+        </Wrapper>
       </Columns>
     );
   }

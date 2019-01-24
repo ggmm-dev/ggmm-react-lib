@@ -216,7 +216,7 @@ export default class NavBar extends Component {
         <Nav>
           <div className="left">
             <Logo>
-              <img src={props.logo} alt="Logo" />
+              <img className={props.logoClass} src={props.logo} alt="Logo" />
             </Logo>
           </div>
           <div style={{ display: "flex" }} className="right">
@@ -236,7 +236,7 @@ export default class NavBar extends Component {
         <Nav>
           <div className="left">
             <Logo>
-              <img src={props.logo} alt="Logo" />
+              <img className={props.logoClass} src={props.logo} alt="Logo" />
             </Logo>
           </div>
           <div className="center">
@@ -259,7 +259,7 @@ export default class NavBar extends Component {
         <Nav>
           <div className="left">
             <Logo>
-              <img src={props.logo} alt="Logo" />
+              <img className={props.logoClass} src={props.logo} alt="Logo" />
             </Logo>
           </div>
 
