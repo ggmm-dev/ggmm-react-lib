@@ -186,6 +186,7 @@ export default class App extends Component {
           blockDown={this.blockDown()}
           backgroundColor="#fab420"
           type="mobile"
+          mobileBgColor="black"
           logo={logo}
           logoWidth="50px"
           iconColor="gray"

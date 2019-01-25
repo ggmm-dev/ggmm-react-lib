@@ -29,27 +29,6 @@ const MobileMenu = styled.div`
     .bm-burger-button {
       display: none;
     }
-    .bm-menu {
-      transition: 0.4s;
-      background: #111;
-      overflow: hidden !important;
-      h4 {
-        color: white;
-        text-transform: capitalize;
-        margin: 0;
-        font-family: $worksans;
-        padding: 8px 0;
-        font-size: 30px;
-        font-weight: 400;
-      }
-      nav.bm-item-list {
-        padding: 70px 0 0 50px;
-      }
-      a {
-        color: white;
-        padding: 10px;
-      }
-    }
   `,
   Nav = styled.div`
     width: 90%;
@@ -282,6 +261,29 @@ export default class NavBar extends Component {
       ${this.props.fixed && "position: fixed"}
       background: ${this.props.backgroundColor};
       padding: ${this.props.padding};
+      .bm-menu {
+        transition: 0.4s;
+        background: ${
+          this.props.mobileBgColor ? this.props.mobileBgColor : "black"
+        };
+        overflow: hidden !important;
+        h4 {
+          color: white;
+          text-transform: capitalize;
+          margin: 0;
+          font-family: $worksans;
+          padding: 8px 0;
+          font-size: 30px;
+          font-weight: 400;
+        }
+        nav.bm-item-list {
+          padding: 70px 0 0 50px;
+        }
+        a {
+          color: white;
+          padding: 10px;
+        }
+      }
     `;
     return (
       <Container>
