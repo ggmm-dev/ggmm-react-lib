@@ -12,6 +12,7 @@ const MobileMenu = styled.div`
       cursor: pointer;
       color: white;
       font-size: 24px;
+      transition: 0.5s;
     }
     img {
       filter: brightnees;
@@ -174,8 +175,9 @@ export default class NavBar extends Component {
     const props = this.props,
       MenuItem = styled.a`
         display: inline;
-        margin-right: 20px;
         text-decoration: none;
+        padding: ${this.props.padding};
+        white-space: nowrap;
         color: ${props.navColor};
       `;
     return _.map(props.nav, nav => {
@@ -258,9 +260,14 @@ export default class NavBar extends Component {
   render() {
     const Container = styled.div`
       width: 100%;
-      ${this.props.fixed && "position: fixed"}
+      ${this.props.fixed && "position: fixed; top: 0;"}
       background: ${this.props.backgroundColor};
-      padding: ${this.props.padding};
+      z-index: 999;
+      height: ${this.props.height};
+      .fa-bars {
+        padding: ${this.props.padding};
+        color: ${this.props.navColor};
+      }
       .bm-menu {
         transition: 0.4s;
         background: ${
@@ -286,7 +293,7 @@ export default class NavBar extends Component {
       }
     `;
     return (
-      <Container>
+      <Container className={this.props.navClass}>
         {this.renderNav()} {this.renderMobile()}
       </Container>
     );
