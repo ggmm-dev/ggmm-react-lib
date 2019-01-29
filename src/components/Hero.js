@@ -135,7 +135,6 @@ export default class Hero extends Component {
       width: 100%;
       padding: ${this.props.padding} 0px;
       height: ${this.props.height + "vh"};
-      min-height: 768px;
     `;
 
     return (

@@ -120,6 +120,45 @@ export default class App extends Component {
   };
 
   render() {
+    const HeroDefault = {
+      type: {
+        value: "image",
+        options: ["video", "image"],
+        type: "select"
+      },
+      headline: {
+        value: "Headline",
+        type: "textarea"
+      },
+      padding: {
+        type: "slider",
+        value: "0px"
+      },
+      subheadline: {
+        type: "textarea",
+        value: "Subheadline"
+      },
+      overlay: {
+        type: "checkbox",
+        value: true
+      },
+      buttonUrl: {
+        value: "/",
+        type: "text"
+      },
+      buttonTitle: {
+        value: "Button",
+        type: "text"
+      },
+      height: {
+        type: "slider",
+        value: "50"
+      },
+      imageUrl: {
+        value: "https://source.unsplash.com/random",
+        type: "image_picker"
+      }
+    };
     return (
       <div>
         <link
@@ -216,7 +255,7 @@ export default class App extends Component {
           blockUp={this.blockUp()}
           blockDown={this.blockDown()}
           type="image" //video or image
-          headline="Headline"
+          headline={HeroDefault.headline.value}
           subheadline="Subheadline"
           overlay={true} //disables darkened overlay
           buttonUrl="/"
