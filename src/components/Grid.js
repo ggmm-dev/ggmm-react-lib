@@ -13,6 +13,10 @@ export default class Grid extends Component {
     }
   };
 
+  renderMarkup = content => {
+    return { __html: content };
+  };
+
   renderUnderText = content => {
     const props = this.props;
     if (props.textType === "under") {
@@ -83,11 +87,11 @@ export default class Grid extends Component {
           return (
             <Grid>
               <div className="icon-image">
-                <img src={grid.image} alt="Grid Image" />
+                {grid.image && <img src={grid.image} alt="Grid Image" />}
                 {this.renderOverlayText(grid.content)}
               </div>
               <h3>{grid.title}</h3>
-              <p>{grid.content}</p>
+              <p dangerouslySetInnerHTML={this.renderMarkup(grid.content)} />
               <a className="grid-button" href={grid.link}>
                 {grid.linkTitle}
               </a>
