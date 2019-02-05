@@ -14,7 +14,7 @@ export default class TwoCol extends Component {
         position: relative;
         background-position: center;
         @media screen and (min-width: 1024px) {
-          width: 50%;
+          width: ${props.leftWidth};
         }
       `;
       return <Column />;
@@ -63,7 +63,7 @@ export default class TwoCol extends Component {
         width: 100%;
         background-position: center;
         @media screen and (min-width: 1024px) {
-          width: 50%;
+          width: ${props.rightWidth};
         }
       `;
       return <Column />;
@@ -97,6 +97,17 @@ export default class TwoCol extends Component {
           <div dangerouslySetInnerHTML={{ __html: props.rightContent }} />
         </Column>
       );
+    } else if (props.right === "html") {
+      const Column = styled.div`
+        width: 100%;
+        @media screen and (min-width: 1024px) {
+          width: ${props.rightWidth};
+        }
+        div {
+          padding: 50px;
+        }
+      `;
+      return <Column>{this.props.children}</Column>;
     }
   }
   render() {

@@ -181,7 +181,11 @@ export default class NavBar extends Component {
         color: ${props.navColor};
       `;
     return _.map(props.nav, nav => {
-      return <MenuItem href={nav.link}>{nav.name}</MenuItem>;
+      return (
+        <MenuItem href={nav.link}>
+          <div className="top-link">{nav.name}</div>
+        </MenuItem>
+      );
     });
   }
 

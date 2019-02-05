@@ -44,6 +44,7 @@ export default class Grid extends Component {
           }
           .icon-image {
             img {
+              width: auto;
               padding: ${this.props.imagePadding};
               max-height: ${this.props.imageHeight};
             }
@@ -84,10 +85,22 @@ export default class Grid extends Component {
               <div className="icon-image">
                 <img src={grid.image} alt="Grid Image" />
                 {this.renderOverlayText(grid.content)}
-
-                {props.overlay && <Overlay />}
               </div>
-              {this.renderUnderText(grid.content)}
+              <h3>{grid.title}</h3>
+              <p>{grid.content}</p>
+              <a className="grid-button" href={grid.link}>
+                {grid.linkTitle}
+              </a>
+            </Grid>
+          );
+        }
+        if (this.props.type === "text") {
+          return (
+            <Grid>
+              <div
+                className="grid-content"
+                dangerouslySetInnerHTML={{ __html: grid.content }}
+              />
             </Grid>
           );
         }

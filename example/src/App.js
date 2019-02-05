@@ -22,20 +22,31 @@ export default class App extends Component {
       grid: {
         0: {
           image: "https://source.unsplash.com/user/williamkarl",
-          content: "Title",
-          link: "https://google.com"
+          content: "Content",
+          title: "Title",
+          link: "https://google.com",
+          linkTitle: "Learn More"
         },
         1: {
           image: "https://source.unsplash.com/user/timmossholder",
-          content: "Title"
+          content: "Content",
+          title: "Title",
+          link: "https://google.com",
+          linkTitle: "Learn More"
         },
         2: {
           image: "https://source.unsplash.com/user/braydenlaw",
-          content: "Title"
+          content: "Content",
+          title: "Title",
+          link: "https://google.com",
+          linkTitle: "Learn More"
         },
         3: {
           image: "https://source.unsplash.com/user/chuttersnap",
-          content: "Title"
+          content: "Content",
+          title: "Title",
+          link: "https://google.com",
+          linkTitle: "Learn More"
         }
       },
       threeCol: {
@@ -67,7 +78,11 @@ export default class App extends Component {
       nav: {
         0: {
           name: "menu-item",
-          link: "/"
+          link: "/",
+          subMenu: {
+            name: "sub-item",
+            link: "/"
+          }
         },
         1: {
           name: "menu-item",
@@ -286,14 +301,17 @@ export default class App extends Component {
           alignItems="center"
           height="500px" //container height
           left="imageCover"
+          leftWidth="60%"
           leftAlt="Alt Tag"
           leftContent="https://source.unsplash.com/user/erondu"
-          right="imageCover"
+          right="html"
           rightAlt="Alt Tag"
+          rightWidth="40%"
           rightContent="https://source.unsplash.com/user/druks"
           fullWidth={true}
-          ratio="half"
-        />
+        >
+          Yolo
+        </TwoCol>
         <SourceText
           types={[
             "data=(data)",
@@ -393,12 +411,14 @@ export default class App extends Component {
           blockUp={this.blockUp()}
           blockDown={this.blockDown()}
           data={this.state.grid}
-          columns="2"
+          columns="4"
           gridGap="10px"
           height="400px"
+          imageHeight="200px"
           overlay={true}
           fullWidth={false}
           text={true}
+          type="icon"
           textType="under"
         />
         <SourceText
