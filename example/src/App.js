@@ -269,14 +269,14 @@ export default class App extends Component {
           deleteBlock={this.deleteBlock()}
           blockUp={this.blockUp()}
           blockDown={this.blockDown()}
-          type="image" //video or image
+          type="video" //video or image
           headline={HeroDefault.headline.value}
           subheadline="Subheadline"
           overlay={true} //disables darkened overlay
           buttonUrl="/"
           height="50" // represents percentage height
           buttonTitle="Start"
-          videoId="306913138" // vimeo video id
+          videoId="299746404" // vimeo video id
           imageUrl="https://source.unsplash.com/random" // src of image for background if type is image
         />
         <SourceText

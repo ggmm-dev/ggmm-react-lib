@@ -6,17 +6,6 @@ export default class Hero extends Component {
   renderBackground() {
     const props = this.props;
 
-    const iframeStyle = {
-      width: "100vw",
-      height: "56.25vw" /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */,
-      minHeight: "100vh",
-      minWidth: "177.77vh" /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */,
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)"
-    };
-
     const VimeoWrapper = styled.div`
         background-color: black;
         position: absolute;
@@ -27,6 +16,16 @@ export default class Hero extends Component {
         z-index: -1;
         pointer-events: none;
         overflow: hidden;
+        iframe {
+          width: 100vw;
+          height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+          min-height: 100vh;
+          min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
       `,
       ImageWrapper = styled.div`
         background-image: url(${props.imageUrl});
@@ -57,7 +56,6 @@ export default class Hero extends Component {
         <VimeoWrapper>
           {props.overlay && <Overlay />}
           <iframe
-            style={iframeStyle}
             title="Iframe"
             src={
               "https://player.vimeo.com/video/" +
@@ -67,7 +65,7 @@ export default class Hero extends Component {
             frameBorder="0"
             webkitallowfullscreen="true"
             mozallowfullscreen="true"
-            allowFullScreen="true"
+            allowFullScreen={true}
           />
           {this.renderCopy()}
         </VimeoWrapper>
@@ -117,6 +115,7 @@ export default class Hero extends Component {
         <Intro>
           <h1>{props.headline}</h1>
           <p>{props.subheadline}</p>
+          {this.props.children}
           <a
             style={{ margin: "0 auto" }}
             className="btn"
@@ -133,6 +132,7 @@ export default class Hero extends Component {
     const Hero = styled.div`
       position: relative;
       width: 100%;
+      z-index: 1;
       padding: ${this.props.padding} 0px;
       height: ${this.props.height + "vh"};
     `;
@@ -149,7 +149,6 @@ export default class Hero extends Component {
           />
         )}
         {this.renderBackground()}
-        {this.props.children}
       </Hero>
     );
   }
