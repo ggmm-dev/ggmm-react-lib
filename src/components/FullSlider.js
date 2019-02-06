@@ -53,7 +53,7 @@ export default class FullSlider extends Component {
         }
       `;
     return (
-      <MainSlide>
+      <MainSlide className={this.props.customClass}>
         {this.props.editor && (
           <Editor
             blockUp={this.props.blockUp}

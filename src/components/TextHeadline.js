@@ -28,7 +28,7 @@ export default class TextHeadline extends Component {
       }
     `;
     return (
-      <Text>
+      <Text className={props.customClass}>
         {this.props.editor && (
           <Editor
             blockUp={this.props.blockUp}

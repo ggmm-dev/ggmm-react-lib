@@ -129,7 +129,7 @@ export default class TwoCol extends Component {
       `;
 
     return (
-      <Columns>
+      <Columns className={props.customClass}>
         <Wrapper>
           {this.props.editor && (
             <Editor

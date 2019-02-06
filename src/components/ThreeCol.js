@@ -73,7 +73,7 @@ export default class ThreeCol extends Component {
       justify-content: space-between;
     `;
     return (
-      <Container>
+      <Container className={props.customClass}>
         {this.props.editor && (
           <Editor
             blockUp={this.props.blockUp}

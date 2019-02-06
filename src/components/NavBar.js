@@ -297,7 +297,7 @@ export default class NavBar extends Component {
       }
     `;
     return (
-      <Container className={this.props.navClass}>
+      <Container className={this.props.customClass}>
         {this.renderNav()} {this.renderMobile()}
       </Container>
     );

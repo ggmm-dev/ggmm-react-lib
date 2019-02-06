@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import _ from "lodash";
 import Editor from "./Editor";
+import { Media, Player, controls, utils } from "react-media-player";
+const { CurrentTime, SeekBar } = controls;
+const { keyboardControls } = utils;
+import CustomPlayPause from "./CustomPlayPause";
 
 export default class Grid extends Component {
   renderOverlayText = content => {
@@ -76,7 +80,7 @@ export default class Grid extends Component {
             <Grid>
               <div className="grid-image">
                 {this.renderOverlayText(grid.content)}
-
+                {this.props.children}
                 {props.overlay && <Overlay />}
               </div>
               {this.renderUnderText(grid.content)}
@@ -92,6 +96,23 @@ export default class Grid extends Component {
               </div>
               <h3>{grid.title}</h3>
               <p dangerouslySetInnerHTML={this.renderMarkup(grid.content)} />
+              {grid.audioLink && (
+                <Media>
+                  {mediaProps => (
+                    <div
+                      className="media"
+                      onKeyDown={keyboardControls.bind(null, mediaProps)}
+                    >
+                      <Player src={grid.audioLink} className="media-player" />
+                      <div className="media-controls">
+                        <CustomPlayPause />
+                        <SeekBar />
+                        <CurrentTime />
+                      </div>
+                    </div>
+                  )}
+                </Media>
+              )}
               <a className="grid-button" href={grid.link}>
                 {grid.linkTitle}
               </a>
@@ -101,10 +122,7 @@ export default class Grid extends Component {
         if (this.props.type === "text") {
           return (
             <Grid>
-              <div
-                className="grid-content"
-                dangerouslySetInnerHTML={{ __html: grid.content }}
-              />
+              <div className="grid-content">{this.props.children}</div>
             </Grid>
           );
         }
@@ -140,7 +158,7 @@ export default class Grid extends Component {
       `;
     if (props) {
       return (
-        <Container>
+        <Container className={props.customClass}>
           {props.title && <h2 style={{ width: "100%" }}>{this.props.title}</h2>}
           <Wrapper>
             {this.props.editor && (

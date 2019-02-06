@@ -112,7 +112,7 @@ export default class Mosaic extends Component {
       grid-template-areas: 'a b' 'a c';
     `;
     return (
-      <Container>
+      <Container className={props.customClass}>
         {this.props.editor && (
           <Editor
             blockUp={this.props.blockUp}

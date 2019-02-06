@@ -115,7 +115,7 @@ export default class Hero extends Component {
         <Intro>
           <h1>{props.headline}</h1>
           <p>{props.subheadline}</p>
-          {this.props.children}
+
           <a
             style={{ margin: "0 auto" }}
             className="btn"
@@ -138,7 +138,7 @@ export default class Hero extends Component {
     `;
 
     return (
-      <Hero className={this.props.className}>
+      <Hero className={this.props.customClass}>
         {this.props.editor && (
           <Editor
             blockUp={this.props.blockUp}
@@ -149,6 +149,7 @@ export default class Hero extends Component {
           />
         )}
         {this.renderBackground()}
+        {this.props.children}
       </Hero>
     );
   }
