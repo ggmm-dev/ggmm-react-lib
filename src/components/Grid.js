@@ -42,6 +42,27 @@ export default class Grid extends Component {
             background-size: cover;
             height: ${this.props.height};
           }
+
+          .media-controls {
+            display: flex;
+            font-family: sans-serif;
+          }
+          .media {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            font-size: 52px;
+            color: white;
+        }
+          input[type="range"] {
+              width: 90%;
+              margin: 0 20px;
+          }
+
+          time {
+              color: gray;
+          }
           .icon-image,
           .grid-image {
             position: relative;
@@ -87,35 +108,44 @@ export default class Grid extends Component {
             </Grid>
           );
         }
+
         if (this.props.type === "icon") {
           return (
             <Grid>
-              <div className="icon-image">
-                {grid.image && <img src={grid.image} alt="Grid Image" />}
+              <div
+                style={{
+                  background: "url(" + grid.image + ")",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center"
+                }}
+                className="icon-image"
+              >
+                {grid.audioLink && (
+                  <Media>
+                    {mediaProps => (
+                      <div
+                        className="media"
+                        onKeyDown={keyboardControls.bind(null, mediaProps)}
+                      >
+                        <Player src={grid.audioLink} className="media-player" />
+                        <div className="media-controls">
+                          <CustomPlayPause />
+                        </div>
+                      </div>
+                    )}
+                  </Media>
+                )}
+                {!grid.imageCover && <img src={grid.image} alt="Grid Image" />}
                 {this.renderOverlayText(grid.content)}
               </div>
-              <h3>{grid.title}</h3>
-              <p dangerouslySetInnerHTML={this.renderMarkup(grid.content)} />
-              {grid.audioLink && (
-                <Media>
-                  {mediaProps => (
-                    <div
-                      className="media"
-                      onKeyDown={keyboardControls.bind(null, mediaProps)}
-                    >
-                      <Player src={grid.audioLink} className="media-player" />
-                      <div className="media-controls">
-                        <CustomPlayPause />
-                        <SeekBar />
-                        <CurrentTime />
-                      </div>
-                    </div>
-                  )}
-                </Media>
-              )}
-              <a className="grid-button" href={grid.link}>
-                {grid.linkTitle}
-              </a>
+              <div className="subcontent">
+                <h3>{grid.title}</h3>
+                <p dangerouslySetInnerHTML={this.renderMarkup(grid.content)} />
+
+                <a className="grid-button" href={grid.link}>
+                  {grid.linkTitle}
+                </a>
+              </div>
             </Grid>
           );
         }

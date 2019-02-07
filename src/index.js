@@ -8,6 +8,7 @@ import ThreeCol from "./components/ThreeCol";
 import Grid from "./components/Grid";
 import Contact from "./components/Contact";
 import FullSlider from "./components/FullSlider";
+import SocialBar from "./components/SocialBar";
 
 export {
   Hero,
@@ -19,5 +20,6 @@ export {
   Contact,
   ThreeCol,
   Grid,
-  FullSlider
+  FullSlider,
+  SocialBar
 };

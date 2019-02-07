@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import _ from "lodash";
 
 import { slide as MobileBurger } from "react-burger-menu";
@@ -117,54 +118,54 @@ export default class NavBar extends Component {
       if (sm.type === "twitter") {
         return (
           <SocialIcon>
-            <a href={sm.link} target="_blank" noreferrer noopener>
+            <Link to={sm.link} target="_blank" noreferrer noopener>
               <i className="fab fa-twitter" />
-            </a>
+            </Link>
           </SocialIcon>
         );
       }
       if (sm.type === "instagram") {
         return (
           <SocialIcon>
-            <a href={sm.link} target="_blank" noreferrer noopener>
+            <Link to={sm.link} target="_blank" noreferrer noopener>
               <i className="fab fa-instagram" />
-            </a>
+            </Link>
           </SocialIcon>
         );
       }
       if (sm.type === "facebook") {
         return (
           <SocialIcon>
-            <a href={sm.link} target="_blank" noreferrer noopener>
+            <Link to={sm.link} target="_blank" noreferrer noopener>
               <i className="fab fa-facebook" />
-            </a>
+            </Link>
           </SocialIcon>
         );
       }
       if (sm.type === "youtube") {
         return (
           <SocialIcon>
-            <a href={sm.link} target="_blank" noreferrer noopener>
+            <Link to={sm.link} target="_blank" noreferrer noopener>
               <i className="fab fa-youtube" />
-            </a>
+            </Link>
           </SocialIcon>
         );
       }
       if (sm.type === "email") {
         return (
           <SocialIcon>
-            <a href={"mailto:" + sm.link} target="_blank" noreferrer noopener>
+            <Link to={"mailto:" + sm.link} target="_blank" noreferrer noopener>
               <i className="far fa-envelope" />
-            </a>
+            </Link>
           </SocialIcon>
         );
       }
       if (sm.type === "linkedin") {
         return (
           <SocialIcon>
-            <a href={sm.link} target="_blank" noreferrer noopener>
+            <Link to={sm.link} target="_blank" noreferrer noopener>
               <i className="fab fa-linkedin" />{" "}
-            </a>
+            </Link>
           </SocialIcon>
         );
       }
@@ -182,8 +183,10 @@ export default class NavBar extends Component {
       `;
     return _.map(props.nav, nav => {
       return (
-        <MenuItem href={nav.link}>
-          <div className="top-link">{nav.name}</div>
+        <MenuItem>
+          <Link className="top-link" to={nav.link}>
+            {nav.name}
+          </Link>
         </MenuItem>
       );
     });
@@ -201,9 +204,9 @@ export default class NavBar extends Component {
         <Nav>
           <div className="left">
             <Logo>
-              <a href="/">
+              <Link to="/">
                 <img className={props.logoClass} src={props.logo} alt="Logo" />
-              </a>
+              </Link>
             </Logo>
           </div>
           <div style={{ display: "flex" }} className="right">
@@ -223,9 +226,9 @@ export default class NavBar extends Component {
         <Nav>
           <div className="left">
             <Logo>
-              <a href="/">
+              <Link to="/">
                 <img className={props.logoClass} src={props.logo} alt="Logo" />
-              </a>
+              </Link>
             </Logo>
           </div>
           <div className="center">

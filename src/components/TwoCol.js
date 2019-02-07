@@ -23,7 +23,7 @@ export default class TwoCol extends Component {
         width: 50%;
         position: relative;
         @media screen and (min-width: 1024px) {
-          width: 50%;
+          width: ${props.leftWidth};
         }
         img {
           width: 100%;
@@ -39,7 +39,7 @@ export default class TwoCol extends Component {
         width: 100%;
         position: relative;
         @media screen and (min-width: 1024px) {
-          width: 50%;
+          width: ${props.leftWidth};
         }
         div {
           padding: 50px;
@@ -48,6 +48,22 @@ export default class TwoCol extends Component {
       return (
         <Column>
           <div dangerouslySetInnerHTML={{ __html: props.leftContent }} />
+        </Column>
+      );
+    } else if (props.left === "children") {
+      const Column = styled.div`
+        width: 100%;
+        position: relative;
+        @media screen and (min-width: 1024px) {
+          width: ${props.leftWidth};
+        }
+        div {
+          padding: 50px;
+        }
+      `;
+      return (
+        <Column>
+          <div dangerouslySetInnerHTML={{ __html: props.children }} />
         </Column>
       );
     }
@@ -97,13 +113,12 @@ export default class TwoCol extends Component {
           <div dangerouslySetInnerHTML={{ __html: props.rightContent }} />
         </Column>
       );
-    } else if (props.right === "html") {
+    } else if (props.right === "children") {
       const Column = styled.div`
         width: 100%;
+        position: relative;
         @media screen and (min-width: 1024px) {
           width: ${props.rightWidth};
-        }
-        div {
           padding: 50px;
         }
       `;

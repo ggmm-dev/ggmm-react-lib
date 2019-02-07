@@ -1,6 +1,6 @@
 {
   "name": "ggmm-react-lib",
-  "version": "1.32.2",
+  "version": "1.32.3",
   "description": "GGMM.io component library",
   "author": "tyhahn",
   "license": "MIT",
@@ -64,6 +64,7 @@
     "react-burger-menu": "^2.5.4",
     "react-jotform-embed": "^1.0.4",
     "react-media-player": "^0.7.6",
+    "react-router-dom": "^4.3.1",
     "react-slick": "^0.23.2",
     "slick-carousel": "^1.8.1",
     "styled-components": "^4.1.3"
