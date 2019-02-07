@@ -416,6 +416,7 @@ export default class App extends Component {
             blockDown={this.blockDown()}
             data={this.state.grid}
             columns="4"
+            imageCover={true}
             gridGap="10px"
             height="400px"
             imageHeight="200px"

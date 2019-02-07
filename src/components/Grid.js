@@ -86,7 +86,15 @@ export default class Grid extends Component {
             position: relative;
             z-index: 1;
           }
-        `;
+        `,
+          IconImage = styled.div`
+            height: ${this.props.imageHeight};
+            background-image: ${this.props.imageCover
+              ? "url(" + grid.image + ")"
+              : ""};
+            background-size: cover;
+            background-position: center;
+          `;
 
         const Overlay = styled.div`
           position: absolute;
@@ -112,14 +120,7 @@ export default class Grid extends Component {
         if (this.props.type === "icon") {
           return (
             <Grid>
-              <div
-                style={{
-                  background: "url(" + grid.image + ")",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center"
-                }}
-                className="icon-image"
-              >
+              <IconImage className="icon-image">
                 {grid.audioLink && (
                   <Media>
                     {mediaProps => (
@@ -135,9 +136,9 @@ export default class Grid extends Component {
                     )}
                   </Media>
                 )}
-                {!grid.imageCover && <img src={grid.image} alt="Grid Image" />}
+                {!props.imageCover && <img src={grid.image} alt="Grid Image" />}
                 {this.renderOverlayText(grid.content)}
-              </div>
+              </IconImage>
               <div className="subcontent">
                 <h3>{grid.title}</h3>
                 <p dangerouslySetInnerHTML={this.renderMarkup(grid.content)} />
