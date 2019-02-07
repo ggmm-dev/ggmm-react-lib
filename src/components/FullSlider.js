@@ -35,6 +35,7 @@ export default class FullSlider extends Component {
     const settings = {
         dots: props.dots,
         infinite: props.infinite,
+        autoplay: props.autoplay,
         speed: props.speed,
         arrows: true,
         slidesToShow: props.slidesToShow,
