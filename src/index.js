@@ -9,6 +9,9 @@ import Grid from "./components/Grid";
 import Contact from "./components/Contact";
 import FullSlider from "./components/FullSlider";
 import SocialBar from "./components/SocialBar";
+import SocialShare from "./components/SocialShare";
+import PlayButton from "./components/PlayButton";
+import MailChimpSignup from "./components/MailChimpSignup";
 
 export {
   Hero,
@@ -21,5 +24,8 @@ export {
   ThreeCol,
   Grid,
   FullSlider,
-  SocialBar
+  SocialBar,
+  SocialShare,
+  PlayButton,
+  MailChimpSignup
 };

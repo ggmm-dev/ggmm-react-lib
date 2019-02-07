@@ -103,14 +103,15 @@ export default class Hero extends Component {
 
       h1 {
         margin: 0;
-        width: 100%;
       }
       p {
         margin: 0;
         width: 100%;
       }
     `;
-    if (props) {
+    if (props.hasChildren) {
+      return <div>{props.children}</div>;
+    } else if (props) {
       return (
         <Intro>
           <h1>{props.headline}</h1>
@@ -135,6 +136,7 @@ export default class Hero extends Component {
       z-index: 1;
       padding: ${this.props.padding} 0px;
       height: ${this.props.height + "vh"};
+      min-height: ${this.props.minHeight + "px"};
     `;
 
     return (
@@ -149,7 +151,7 @@ export default class Hero extends Component {
           />
         )}
         {this.renderBackground()}
-        {this.props.children}
+        {!this.props.hasChildren && this.props.children}
       </Hero>
     );
   }

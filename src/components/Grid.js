@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import _ from "lodash";
 import Editor from "./Editor";
+import PlayButton from "./PlayButton";
 import { Media, Player, controls, utils } from "react-media-player";
 const { CurrentTime, SeekBar } = controls;
 const { keyboardControls } = utils;
@@ -121,21 +122,7 @@ export default class Grid extends Component {
           return (
             <Grid>
               <IconImage className="icon-image">
-                {grid.audioLink && (
-                  <Media>
-                    {mediaProps => (
-                      <div
-                        className="media"
-                        onKeyDown={keyboardControls.bind(null, mediaProps)}
-                      >
-                        <Player src={grid.audioLink} className="media-player" />
-                        <div className="media-controls">
-                          <CustomPlayPause />
-                        </div>
-                      </div>
-                    )}
-                  </Media>
-                )}
+                {grid.audioLink && <PlayButton audioLink={grid.audioLink} />}
                 {!props.imageCover && <img src={grid.image} alt="Grid Image" />}
                 {this.renderOverlayText(grid.content)}
               </IconImage>

@@ -1,36 +1,68 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export default class SocialBar extends Component {
   render() {
     const props = this.props,
       Bar = styled.div`
-        width: 110px;
         display: flex;
         justify-content: space-between;
-        margin: 10px 0 20px 0px;
+        p {
+          margin-right: 20px;
+        }
         i {
           color: ${props.iconColor};
+          margin-right: 20px;
         }
       `;
 
     return (
       <Bar>
+        {props.label ? <p>{props.label}</p> : <p>Listen</p>}
         {props.spotify && (
-          <Link to={props.spotify} target="_blank" rel="noopener noreferrer">
+          <a href={props.spotify} target="_blank" rel="noopener noreferrer">
             <i className="fab fa-spotify" />
-          </Link>
+          </a>
         )}
         {props.itunes && (
-          <Link to={props.itunes} target="_blank" rel="noopener noreferrer">
+          <a href={props.itunes} target="_blank" rel="noopener noreferrer">
             <i className="fab fa-itunes" />
-          </Link>
+          </a>
         )}
         {props.google && (
-          <Link to={props.google} target="_blank" rel="noopener noreferrer">
+          <a href={props.google} target="_blank" rel="noopener noreferrer">
             <i className="fab fa-google-play" />
-          </Link>
+          </a>
+        )}
+        {props.instagram && (
+          <a href={props.instagram} target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-instagram" />
+          </a>
+        )}
+        {props.facebook && (
+          <a href={props.facebook} target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-facebook" />
+          </a>
+        )}
+        {props.youtube && (
+          <a href={props.youtube} target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-youtube" />
+          </a>
+        )}
+        {props.email && (
+          <a href={props.email} target="_blank" rel="noopener noreferrer">
+            <i className="far fa-envelope" />
+          </a>
+        )}
+        {props.twitter && (
+          <a href={props.twitter} target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-twitter" />
+          </a>
+        )}
+        {props.linkedin && (
+          <a href={props.linkedin} target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-linkedin" />
+          </a>
         )}
       </Bar>
     );

@@ -38,6 +38,10 @@ const MobileMenu = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
   `,
   Burger = styled.div`
     .burger {
@@ -164,7 +168,7 @@ export default class NavBar extends Component {
         return (
           <SocialIcon>
             <Link to={sm.link} target="_blank" noreferrer noopener>
-              <i className="fab fa-linkedin" />{" "}
+              <i className="fab fa-linkedin" />
             </Link>
           </SocialIcon>
         );
