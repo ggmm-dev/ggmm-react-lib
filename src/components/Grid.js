@@ -121,11 +121,15 @@ export default class Grid extends Component {
         if (this.props.type === "icon") {
           return (
             <Grid>
-              <IconImage className="icon-image">
-                {grid.audioLink && <PlayButton audioLink={grid.audioLink} />}
-                {!props.imageCover && <img src={grid.image} alt="Grid Image" />}
-                {this.renderOverlayText(grid.content)}
-              </IconImage>
+              {grid.image && (
+                <IconImage className="icon-image">
+                  {grid.audioLink && <PlayButton audioLink={grid.audioLink} />}
+                  {!props.imageCover && (
+                    <img src={grid.image} alt="Grid Image" />
+                  )}
+                  {this.renderOverlayText(grid.content)}
+                </IconImage>
+              )}
               <div className="subcontent">
                 <h3>{grid.title}</h3>
                 <p dangerouslySetInnerHTML={this.renderMarkup(grid.content)} />

@@ -188,7 +188,11 @@ export default class NavBar extends Component {
     return _.map(props.nav, nav => {
       return (
         <MenuItem>
-          <Link className="top-link" to={nav.link}>
+          <Link
+            onClick={() => this.setState({ menuOpen: false })}
+            className="top-link"
+            to={nav.link}
+          >
             {nav.name}
           </Link>
         </MenuItem>
