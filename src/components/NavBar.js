@@ -118,10 +118,10 @@ export default class NavBar extends Component {
           color: ${props.iconColor};
         }
       `;
-    return _.map(props.social, sm => {
+    return _.map(props.social, (sm, i) => {
       if (sm.type === "twitter") {
         return (
-          <SocialIcon>
+          <SocialIcon key={i}>
             <Link to={sm.link} target="_blank" noreferrer noopener>
               <i className="fab fa-twitter" />
             </Link>
@@ -130,7 +130,7 @@ export default class NavBar extends Component {
       }
       if (sm.type === "instagram") {
         return (
-          <SocialIcon>
+          <SocialIcon key={i}>
             <Link to={sm.link} target="_blank" noreferrer noopener>
               <i className="fab fa-instagram" />
             </Link>
@@ -139,7 +139,7 @@ export default class NavBar extends Component {
       }
       if (sm.type === "facebook") {
         return (
-          <SocialIcon>
+          <SocialIcon key={i}>
             <Link to={sm.link} target="_blank" noreferrer noopener>
               <i className="fab fa-facebook" />
             </Link>
@@ -148,7 +148,7 @@ export default class NavBar extends Component {
       }
       if (sm.type === "youtube") {
         return (
-          <SocialIcon>
+          <SocialIcon key={i}>
             <Link to={sm.link} target="_blank" noreferrer noopener>
               <i className="fab fa-youtube" />
             </Link>
@@ -157,7 +157,7 @@ export default class NavBar extends Component {
       }
       if (sm.type === "email") {
         return (
-          <SocialIcon>
+          <SocialIcon key={i}>
             <Link to={"mailto:" + sm.link} target="_blank" noreferrer noopener>
               <i className="far fa-envelope" />
             </Link>
@@ -166,7 +166,7 @@ export default class NavBar extends Component {
       }
       if (sm.type === "linkedin") {
         return (
-          <SocialIcon>
+          <SocialIcon key={i}>
             <Link to={sm.link} target="_blank" noreferrer noopener>
               <i className="fab fa-linkedin" />
             </Link>
@@ -185,18 +185,19 @@ export default class NavBar extends Component {
         white-space: nowrap;
         color: ${props.navColor};
       `;
-    return _.map(props.nav, nav => {
-      return (
-        <MenuItem>
+    return _.map(props.nav, (nav, i) => {
+      if (nav.link) {
+        return (
           <Link
+            key={i}
             onClick={() => this.setState({ menuOpen: false })}
             className="top-link"
             to={nav.link}
           >
             {nav.name}
           </Link>
-        </MenuItem>
-      );
+        );
+      }
     });
   }
 

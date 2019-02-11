@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import _ from "lodash";
 import Editor from "./Editor";
+import { Link } from "react-router-dom";
 import PlayButton from "./PlayButton";
 import { Media, Player, controls, utils } from "react-media-player";
 const { CurrentTime, SeekBar } = controls;
@@ -36,8 +37,15 @@ export default class Grid extends Component {
   renderGrid() {
     const props = this.props;
     if (props.data) {
-      return _.map(props.data, grid => {
+      return _.map(props.data, (grid, i) => {
         const Grid = styled.div`
+          @media screen and (max-width: 767px){
+            text-align: center;
+            margin: 0 auto;
+            .icon-image{
+              margin: 0 auto !important;
+            }
+          }
           .grid-image {
             background-image: url('${grid.image}');
             background-size: cover;
@@ -107,7 +115,7 @@ export default class Grid extends Component {
         `;
         if (this.props.type === "cover") {
           return (
-            <Grid>
+            <Grid key={i}>
               <div className="grid-image">
                 {this.renderOverlayText(grid.content)}
                 {this.props.children}
@@ -120,7 +128,7 @@ export default class Grid extends Component {
 
         if (this.props.type === "icon") {
           return (
-            <Grid>
+            <Grid key={i}>
               {grid.image && (
                 <IconImage className="icon-image">
                   {grid.audioLink && <PlayButton audioLink={grid.audioLink} />}
@@ -134,16 +142,18 @@ export default class Grid extends Component {
                 <h3>{grid.title}</h3>
                 <p dangerouslySetInnerHTML={this.renderMarkup(grid.content)} />
 
-                <a className="grid-button" href={grid.link}>
-                  {grid.linkTitle}
-                </a>
+                {grid.linkTitle && (
+                  <Link to={grid.link} className="grid-button">
+                    {grid.linkTitle}
+                  </Link>
+                )}
               </div>
             </Grid>
           );
         }
         if (this.props.type === "text") {
           return (
-            <Grid>
+            <Grid key={i}>
               <div className="grid-content">{this.props.children}</div>
             </Grid>
           );
