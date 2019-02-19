@@ -128,13 +128,11 @@ export default class TwoCol extends Component {
   render() {
     const props = this.props,
       Columns = styled.div`
-
-      background-color: ${this.props.bgColor}
-
-      padding: ${this.props.padding} 0px;
-      position: relative;
-      ${this.props.fullWidth ? "width: 100%" : "width: 90%; margin: 0 auto"};
-    `,
+        background-color: ${this.props.bgColor};
+        padding: ${this.props.padding} 0px;
+        position: relative;
+        ${this.props.fullWidth ? "width: 100%" : "width: 90%; margin: 0 auto"};
+      `,
       Wrapper = styled.div`
         align-items: ${this.props.alignItems};
         display: flex;
