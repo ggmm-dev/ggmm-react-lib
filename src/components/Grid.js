@@ -1,27 +1,27 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import _ from 'lodash'
-import Editor from './Editor'
-import { Link } from 'react-router-dom'
-import PlayButton from './PlayButton'
-import { Media, Player, controls, utils } from 'react-media-player'
-import CustomPlayPause from './CustomPlayPause'
-const { CurrentTime, SeekBar } = controls
-const { keyboardControls } = utils
+import React, { Component } from "react";
+import styled from "styled-components";
+import _ from "lodash";
+import Editor from "./Editor";
+import { Link } from "react-router-dom";
+import PlayButton from "./PlayButton";
+import { Media, Player, controls, utils } from "react-media-player";
+import CustomPlayPause from "./CustomPlayPause";
+const { CurrentTime, SeekBar } = controls;
+const { keyboardControls } = utils;
 
 export default class Grid extends Component {
   renderOverlayText = content => {
-    const props = this.props
-    if (props.textType === 'overlay') {
+    const props = this.props;
+    if (props.textType === "overlay") {
       return (
-        <div className='title' dangerouslySetInnerHTML={{ __html: content }} />
-      )
+        <div className="title" dangerouslySetInnerHTML={{ __html: content }} />
+      );
     }
-  }
+  };
 
   renderMarkup = content => {
-    return { __html: content }
-  }
+    return { __html: content };
+  };
 
   renderGridTitle = (title, content, link) => {
     if (link) {
@@ -34,44 +34,46 @@ export default class Grid extends Component {
             <p dangerouslySetInnerHTML={this.renderMarkup(content)} />
           </Link>
         </div>
-      )
+      );
     } else if (title && content) {
       return (
         <div>
           <h3>{title}</h3>
           <p dangerouslySetInnerHTML={this.renderMarkup(content)} />
         </div>
-      )
+      );
     } else if (content) {
-      return <p dangerouslySetInnerHTML={this.renderMarkup(content)} />
+      return <p dangerouslySetInnerHTML={this.renderMarkup(content)} />;
     }
-  }
+  };
 
   renderUnderText = content => {
-    const props = this.props
-    if (props.textType === 'under') {
+    const props = this.props;
+    if (props.textType === "under") {
       return (
         <div
-          className='under-text'
+          className="under-text"
           dangerouslySetInnerHTML={{ __html: content }}
         />
-      )
+      );
     }
-  }
+  };
 
   renderGridImage = (image, link) => {
+    console.log("init");
     if (image && link) {
       return (
         <Link to={link}>
-          <img src={image} alt='Grid Image' />
+          <img src={image} alt="Grid Image" />
         </Link>
-      )
+      );
     } else if (image) {
-      return <img src={image} alt='Grid Image' />
+      console.log(true);
+      return <img src={image} alt="Grid Image" />;
     }
-  }
+  };
   renderGrid() {
-    const props = this.props
+    const props = this.props;
     if (props.data) {
       return _.map(props.data, (grid, i) => {
         const Grid = styled.div`
@@ -131,16 +133,16 @@ export default class Grid extends Component {
             position: relative;
             z-index: 1;
           }
-        `
+        `;
 
         const IconImage = styled.div`
           height: ${this.props.imageHeight};
           background-image: ${this.props.imageCover
-    ? 'url(' + grid.image + ')'
-    : ''};
+            ? "url(" + grid.image + ")"
+            : ""};
           background-size: cover;
           background-position: center;
-        `
+        `;
 
         const Overlay = styled.div`
           position: absolute;
@@ -149,73 +151,74 @@ export default class Grid extends Component {
           width: 100%;
           background: rgba(0, 0, 0, 0.5);
           z-index: 0;
-        `
-        if (this.props.type === 'cover') {
+        `;
+        if (this.props.type === "cover") {
           return (
             <Grid key={i}>
-              <div className='grid-image'>
+              <div className="grid-image">
                 {this.renderOverlayText(grid.content)}
                 {this.props.children}
                 {props.overlay && <Overlay />}
               </div>
               {this.renderUnderText(grid.content)}
             </Grid>
-          )
+          );
         }
 
-        if (this.props.type === 'icon') {
+        if (this.props.type === "icon") {
+          console.log(grid.image);
           return (
             <Grid key={i}>
               {grid.image && (
-                <IconImage className='icon-image'>
+                <IconImage className="icon-image">
                   {grid.audioLink && <PlayButton audioLink={grid.audioLink} />}
                   {this.renderGridImage(grid.image, grid.link)}
                   {this.renderOverlayText(grid.content)}
                 </IconImage>
               )}
-              <div className='subcontent'>
+              <div className="subcontent">
                 {this.renderGridTitle(grid.title, grid.content, grid.link)}
 
                 {grid.linkTitle && (
-                  <Link to={grid.link} className='grid-button'>
+                  <Link to={grid.link} className="grid-button">
                     {grid.linkTitle}
                   </Link>
                 )}
               </div>
             </Grid>
-          )
+          );
         }
-        if (this.props.type === 'text') {
+        if (this.props.type === "text") {
           return (
             <Grid key={i}>
-              <div className='grid-content'>{this.props.children}</div>
+              <div className="grid-content">{this.props.children}</div>
             </Grid>
-          )
+          );
         }
-      })
+      });
     }
   }
 
   renderContent() {
-    const props = this.props
+    const props = this.props;
 
-    const gridTotal = Object.keys(props.data).length
+    const gridTotal = Object.keys(props.data).length;
 
     const Container = styled.div`
       padding: ${props.padding} 0px;
-      ${this.props.fullWidth ? 'width: 100%' : 'width: 90%; margin: 0 auto'};
+      ${this.props.fullWidth ? "width: 100%" : "width: 90%; margin: 0 auto"};
       h2 {
         padding: 40px;
         text-align: ${props.textAlign};
       }
-    `
+    `;
 
     const Wrapper = styled.div`
         ${props.containerStyles}
         display: grid;
         position: relative;
         max-width: ${props.maxWidth};
-        ${props.maxWidth && 'margin: 0 auto;'}
+        ${props.maxWidth && "margin: 0 auto;"}
         grid-template-columns: repeat(${props.mobileColumns}, 1fr);
         grid-gap: ${props.gridGap};
         @media screen and (min-width: 768px) {
@@ -224,11 +227,11 @@ export default class Grid extends Component {
         @media screen and (min-width: 1024px) {
           grid-template-columns: repeat(${props.columns}, 1fr);
         }
-      `
+      `;
     if (props) {
       return (
         <Container className={props.customClass}>
-          {props.title && <h2 style={{ width: '100%' }}>{this.props.title}</h2>}
+          {props.title && <h2 style={{ width: "100%" }}>{this.props.title}</h2>}
           <Wrapper>
             {this.props.editor && (
               <Editor
@@ -242,10 +245,10 @@ export default class Grid extends Component {
             {this.renderGrid()}
           </Wrapper>
         </Container>
-      )
+      );
     }
   }
   render() {
-    return <div>{this.renderContent()}</div>
+    return <div>{this.renderContent()}</div>;
   }
 }
