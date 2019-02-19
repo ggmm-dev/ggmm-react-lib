@@ -150,6 +150,7 @@ export default class Grid extends Component {
           background: rgba(0, 0, 0, 0.5);
           z-index: 0;
         `
+
         if (this.props.type === 'cover') {
           return (
             <Grid key={i}>
@@ -239,6 +240,7 @@ export default class Grid extends Component {
                 enableIcon={this.props.enableIcon}
               />
             )}
+
             {this.renderGrid()}
           </Wrapper>
         </Container>
