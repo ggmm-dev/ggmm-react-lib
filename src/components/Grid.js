@@ -60,16 +60,35 @@ export default class Grid extends Component {
   };
 
   renderGridImage = (image, link) => {
-    console.log("init");
-    if (image && link) {
+    if (image && link && !this.props.imageCover) {
       return (
         <Link to={link}>
           <img src={image} alt="Grid Image" />
         </Link>
       );
-    } else if (image) {
-      console.log(true);
+    } else if (image && !this.props.imageCover) {
       return <img src={image} alt="Grid Image" />;
+    }
+  };
+
+  renderLinks = (link, linkTitle, type) => {
+    if (type === "external" && link) {
+      return (
+        <a
+          href={link}
+          rel="noreferrer noopener"
+          target="_blank"
+          className="grid-button"
+        >
+          {linkTitle}
+        </a>
+      );
+    } else if (link) {
+      return (
+        <Link to={link} className="grid-button">
+          {linkTitle}
+        </Link>
+      );
     }
   };
   renderGrid() {
@@ -179,10 +198,10 @@ export default class Grid extends Component {
               <div className="subcontent">
                 {this.renderGridTitle(grid.title, grid.content, grid.link)}
 
-                {grid.linkTitle && (
-                  <Link to={grid.link} className="grid-button">
-                    {grid.linkTitle}
-                  </Link>
+                {this.renderLinks(
+                  grid.link,
+                  grid.linkTitle,
+                  this.props.linkType
                 )}
               </div>
             </Grid>
