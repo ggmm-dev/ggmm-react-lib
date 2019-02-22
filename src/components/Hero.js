@@ -116,14 +116,16 @@ export default class Hero extends Component {
         <Intro>
           <h1>{props.headline}</h1>
           <p>{props.subheadline}</p>
-
-          <a
-            style={{ margin: "0 auto" }}
-            className="btn"
-            href={props.buttonUrl}
-          >
-            {props.buttonTitle}
-          </a>
+          <div className="button-content">{props.bottomContent}</div>
+          {props.buttonTitle && (
+            <a
+              style={{ margin: "0 auto" }}
+              className="btn"
+              href={props.buttonUrl}
+            >
+              {props.buttonTitle}
+            </a>
+          )}
         </Intro>
       );
     }
