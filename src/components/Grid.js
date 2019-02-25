@@ -224,8 +224,8 @@ export default class Grid extends Component {
     const gridTotal = Object.keys(props.data).length;
 
     const Container = styled.div`
+      background-color: ${this.props.bgColor};
       padding: ${props.padding} 0px;
-      ${this.props.fullWidth ? "width: 100%" : "width: 90%; margin: 0 auto"};
       h2 {
         padding: 40px;
         text-align: ${props.textAlign};
@@ -234,6 +234,7 @@ export default class Grid extends Component {
 
     const Wrapper = styled.div`
         ${props.containerStyles}
+        ${this.props.fullWidth ? "width: 100%" : "width: 90%; margin: 0 auto"};
         display: grid;
         position: relative;
         max-width: ${props.maxWidth};

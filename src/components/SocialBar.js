@@ -17,8 +17,8 @@ export default class SocialBar extends Component {
       `;
 
     return (
-      <Bar>
-        {props.label ? <p>{props.label}</p> : <p>Listen</p>}
+      <Bar className={props.customClass}>
+        {props.label ? <p>{props.label}</p> : ""}
         {props.spotify && (
           <a href={props.spotify} target="_blank" rel="noopener noreferrer">
             <i className="fab fa-spotify" />
@@ -62,6 +62,11 @@ export default class SocialBar extends Component {
         {props.linkedin && (
           <a href={props.linkedin} target="_blank" rel="noopener noreferrer">
             <i className="fab fa-linkedin" />
+          </a>
+        )}
+        {props.vimeo && (
+          <a href={props.vimeo} target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-vimeo" />
           </a>
         )}
       </Bar>

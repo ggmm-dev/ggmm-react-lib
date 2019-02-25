@@ -120,7 +120,7 @@ export default class Hero extends Component {
           {props.buttonTitle && (
             <a
               style={{ margin: "0 auto" }}
-              className="btn"
+              className={props.buttonClass}
               href={props.buttonUrl}
             >
               {props.buttonTitle}
