@@ -13,6 +13,7 @@ import SocialShare from "./components/SocialShare";
 import PlayButton from "./components/PlayButton";
 import MailChimpSignup from "./components/MailChimpSignup";
 import Loader from "./components/Loader";
+import PlayBar from "./components/PlayBar";
 
 export {
   Hero,
@@ -28,6 +29,7 @@ export {
   SocialBar,
   SocialShare,
   PlayButton,
+  PlayBar,
   MailChimpSignup,
   Loader
 };
