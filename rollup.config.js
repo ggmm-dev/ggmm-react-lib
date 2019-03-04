@@ -10,7 +10,15 @@ import pkg from "./package.json";
 
 export default {
   input: "src/index.js",
-  external: ["styled-components", "react-burger-menu", "react-jotform-embed"],
+  external: [
+    "styled-components",
+    "react-media-player",
+    "react-slide",
+    "lodash",
+    "react-mailchimp-subscribe",
+    "react-burger-menu",
+    "react-jotform-embed"
+  ],
   globals: { "styled-components": "styled", "react-burger-menu": "slide" },
   output: [
     {

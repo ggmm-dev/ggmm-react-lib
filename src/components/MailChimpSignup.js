@@ -1,30 +1,20 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import MailchimpSubscribe from 'react-mailchimp-subscribe'
+import React, { Component } from "react";
+import styled from "styled-components";
+import MailchimpSubscribe from "react-mailchimp-subscribe";
 
 export default class MailChimpSignup extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      emailValue: '',
-      fNameValue: '',
-      lNameValue: ''
-    }
-  }
-
   render() {
-    const props = this.props
-
-    const MailChimp = styled.div`
+    const props = this.props,
+      MailChimp = styled.div`
         background: ${props.backgroundColor};
         padding: ${props.padding};
         .container {
-          ${props.center && 'text-align: center'}
+          ${props.center && "text-align: center"}
           max-width: ${props.maxWidth};
         }
         div#mc_embed_signup {
           margin-top: 20px;
-          ${props.center && 'display: flex; justify-content: center;'}
+          ${props.center && "display: flex; justify-content: center;"}
         }
         h4{
           margin-bottom: 10px;
@@ -33,41 +23,83 @@ export default class MailChimpSignup extends Component {
           display: flex;
         }
 
+        input{
+          border: 0px solid;
+          padding-left: 10px;
+        }
+
         .mc-field-group {
           margin-right: 5px;
         }
-      `
+      `,
+      CustomForm = ({ status, message, onValidated }) => {
+        let email;
+        const submit = () =>
+          email &&
+          email.value.indexOf("@") > -1 &&
+          onValidated({
+            EMAIL: email.value
+          });
+        if (status === "success" && props.callBack) {
+          props.callBack();
+        }
+        return (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center"
+            }}
+          >
+            {status === "sending" && (
+              <div style={{ color: "blue" }}>sending...</div>
+            )}
+            {status === "error" && (
+              <div
+                style={{ color: "red" }}
+                dangerouslySetInnerHTML={{ __html: message }}
+              />
+            )}
+            {status === "success" && (
+              <div
+                className="sux"
+                style={{ color: "green" }}
+                dangerouslySetInnerHTML={{ __html: message }}
+              />
+            )}
 
-    const SimpleForm = () => <MailchimpSubscribe url={props.mcUrl} />
+            <input
+              ref={node => (email = node)}
+              type="email"
+              placeholder="Your Email"
+            />
+            <br />
+            <button className={props.buttonClass} onClick={submit}>
+              Submit
+            </button>
+          </div>
+        );
+      };
+
+    const SimpleForm = () => <MailchimpSubscribe url={props.mcUrl} />;
     return (
       <MailChimp className={props.customClass}>
-        <div className='opt-in'>
-          <div className='container'>
+        <div className="opt-in">
+          <div className="container">
             {this.props.children}
 
             <MailchimpSubscribe
               url={props.mcUrl}
               render={({ subscribe, status, message }) => (
-                <div>
-                  <SimpleForm onSubmitted={formData => subscribe(formData)} />
-                  {status === 'sending' && (
-                    <div style={{ color: 'blue' }}>swaiting...</div>
-                  )}
-                  {status === 'error' && (
-                    <div
-                      style={{ color: 'red' }}
-                      dangerouslySetInnerHTML={{ __html: message }}
-                    />
-                  )}
-                  {status === 'success' && (
-                    <div style={{ color: 'green' }}>Subscribed !</div>
-                  )}
-                </div>
+                <CustomForm
+                  status={status}
+                  message={message}
+                  onValidated={formData => subscribe(formData)}
+                />
               )}
             />
           </div>
         </div>
       </MailChimp>
-    )
+    );
   }
 }

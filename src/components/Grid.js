@@ -185,7 +185,6 @@ export default class Grid extends Component {
         }
 
         if (this.props.type === "icon") {
-          console.log(grid.image);
           return (
             <Grid key={i}>
               {grid.image && (
