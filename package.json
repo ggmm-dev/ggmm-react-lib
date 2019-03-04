@@ -63,6 +63,7 @@
     "lodash": "^4.17.11",
     "react-burger-menu": "^2.5.4",
     "react-jotform-embed": "^1.0.4",
+    "react-mailchimp-subscribe": "^2.1.0",
     "react-media-player": "^0.7.6",
     "react-router-dom": "^4.3.1",
     "react-slick": "^0.23.2",

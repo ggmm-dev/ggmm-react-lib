@@ -1,7 +1,17 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import MailchimpSubscribe from 'react-mailchimp-subscribe'
 
 export default class MailChimpSignup extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      emailValue: '',
+      fNameValue: '',
+      lNameValue: ''
+    }
+  }
+
   render() {
     const props = this.props
 
@@ -27,89 +37,34 @@ export default class MailChimpSignup extends Component {
           margin-right: 5px;
         }
       `
+
+    const SimpleForm = () => <MailchimpSubscribe url={props.mcUrl} />
     return (
       <MailChimp className={props.customClass}>
         <div className='opt-in'>
           <div className='container'>
             {this.props.children}
 
-            <div id='mc_embed_signup'>
-              <form
-                action={props.mcUrl}
-                method='post'
-                id='mc-embedded-subscribe-form'
-                name='mc-embedded-subscribe-form'
-                className='validate'
-                target='_blank'
-                noValidate
-              >
-                <div id='mc_embed_signup_scroll'>
-                  <div className='mc-field-group'>
-                    <input
-                      type='email'
-                      name='EMAIL'
-                      placeholder='Your Email'
-                      className='required email'
-                      id='mce-EMAIL'
-                    />
-                  </div>
-                  {props.hasFirstName && (
-                    <div className='mc-field-group'>
-                      <input
-                        type='text'
-                        value=''
-                        name='FNAME'
-                        className=''
-                        id='mce-FNAME'
-                      />
-                    </div>
+            <MailchimpSubscribe
+              url={props.mcUrl}
+              render={({ subscribe, status, message }) => (
+                <div>
+                  <SimpleForm onSubmitted={formData => subscribe(formData)} />
+                  {status === 'sending' && (
+                    <div style={{ color: 'blue' }}>swaiting...</div>
                   )}
-                  {props.hasLastName && (
-                    <div className='mc-field-group'>
-                      <input
-                        type='text'
-                        value=''
-                        name='LNAME'
-                        className=''
-                        id='mce-LNAME'
-                      />
-                    </div>
+                  {status === 'error' && (
+                    <div
+                      style={{ color: 'red' }}
+                      dangerouslySetInnerHTML={{ __html: message }}
+                    />
                   )}
-                  <div id='mce-responses' className='clear'>
-                    <div
-                      className='response'
-                      id='mce-error-response'
-                      style={{ display: 'none' }}
-                    />
-                    <div
-                      className='response'
-                      id='mce-success-response'
-                      style={{ display: 'none' }}
-                    />
-                  </div>
-                  <div
-                    style={{ position: 'absolute', left: '-5000px' }}
-                    aria-hidden='true'
-                  >
-                    <input
-                      type='text'
-                      name='b_4c27f09ab6a622c6340c21d60_b6d5e93004'
-                      tabIndex='-1'
-                      value=''
-                    />
-                  </div>
-                  <div className='clear'>
-                    <input
-                      type='submit'
-                      value='Subscribe'
-                      name='subscribe'
-                      id='mc-embedded-subscribe'
-                      className={props.buttonClass}
-                    />
-                  </div>
+                  {status === 'success' && (
+                    <div style={{ color: 'green' }}>Subscribed !</div>
+                  )}
                 </div>
-              </form>
-            </div>
+              )}
+            />
           </div>
         </div>
       </MailChimp>
