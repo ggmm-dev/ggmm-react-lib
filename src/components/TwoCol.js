@@ -141,6 +141,10 @@ export default class TwoCol extends Component {
         margin: 0 auto;
         flex-wrap: wrap;
         max-width: ${props.maxWidth};
+        ${props.right === "image" ? "flex-direction: column-reverse" : ""}
+        @media screen and (min-width: 1024px) {
+          ${props.right === "image" ? "flex-direction: inherit" : ""}
+        }
       `;
 
     return (
