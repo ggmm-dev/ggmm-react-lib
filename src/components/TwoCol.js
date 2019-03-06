@@ -20,7 +20,7 @@ export default class TwoCol extends Component {
       return <Column />;
     } else if (props.left === "image") {
       const Column = styled.div`
-        width: 50%;
+        width: 100%;
         position: relative;
         @media screen and (min-width: 1024px) {
           width: ${props.leftWidth};
