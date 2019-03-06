@@ -12,6 +12,7 @@ export default class MailChimpSignup extends Component {
           ${props.center && "text-align: center"}
           max-width: ${props.maxWidth};
         }
+        
         div#mc_embed_signup {
           margin-top: 20px;
           ${props.center && "display: flex; justify-content: center;"}

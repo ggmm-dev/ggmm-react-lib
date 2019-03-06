@@ -42,6 +42,10 @@ const MobileMenu = styled.div`
       text-decoration: none;
       color: inherit;
     }
+    p {
+      margin: 0;
+      padding: 0;
+    }
   `,
   Burger = styled.div`
     .burger {
@@ -176,6 +180,10 @@ export default class NavBar extends Component {
     });
   }
 
+  renderMarkup = content => {
+    return { __html: content };
+  };
+
   renderLinks() {
     const props = this.props,
       MenuItem = styled.a`
@@ -194,7 +202,7 @@ export default class NavBar extends Component {
             className="top-link"
             to={nav.link}
           >
-            {nav.name}
+            <p dangerouslySetInnerHTML={this.renderMarkup(nav.name)} />
           </Link>
         );
       }
@@ -205,6 +213,7 @@ export default class NavBar extends Component {
     const props = this.props,
       Logo = styled.div`
         img {
+          padding: ${props.padding}
           width: ${props.logoWidth};
         }
       `;

@@ -101,6 +101,8 @@ export default class TwoCol extends Component {
     } else if (props.right === "text") {
       const Column = styled.div`
         width: 100%;
+        position: relative;
+        height: ${this.props.height};
         @media screen and (min-width: 1024px) {
           width: 50%;
         }
