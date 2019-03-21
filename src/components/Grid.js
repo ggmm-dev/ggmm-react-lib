@@ -246,6 +246,9 @@ export default class Grid extends Component {
         @media screen and (min-width: 1024px) {
           grid-template-columns: repeat(${props.columns}, 1fr);
         }
+        @media screen and (min-width: 1280px) {
+          grid-template-columns: repeat(${props.largeColumns}, 1fr);
+        }
       `;
     if (props) {
       return (
