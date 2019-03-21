@@ -9,7 +9,7 @@ export default class TwoCol extends Component {
       const Column = styled.div`
         background-image: url(${props.leftContent});
         background-size: cover;
-        height: ${this.props.height};
+        height: ${props.imageHeight};
         width: 100%;
         position: relative;
         background-position: center;
@@ -71,11 +71,12 @@ export default class TwoCol extends Component {
   renderRight() {
     const props = this.props;
     if (props.right === "imageCover") {
+      console.log(props);
       const Column = styled.div`
         position: relative;
         background-image: url(${props.rightContent});
         background-size: cover;
-        height: ${this.props.height};
+        height: ${props.imageHeight};
         width: 100%;
         background-position: center;
         @media screen and (min-width: 1024px) {

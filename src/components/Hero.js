@@ -36,7 +36,7 @@ export default class Hero extends Component {
       height: 100%;
       background-attachment: fixed;
       background-size: cover;
-      background-position: center;
+      background-position: ${props.bgPosition};
       ${props.centerChildren
         ? "display: flex; justify-content: center; align-items: center"
         : ""}
