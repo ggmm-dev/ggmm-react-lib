@@ -15,6 +15,7 @@ export default class TwoCol extends Component {
         background-position: center;
         @media screen and (min-width: 1024px) {
           width: ${props.leftWidth};
+          padding-right: 50px;
         }
       `;
       return <Column />;
@@ -24,6 +25,7 @@ export default class TwoCol extends Component {
         position: relative;
         @media screen and (min-width: 1024px) {
           width: ${props.leftWidth};
+          padding-right: 50px;
         }
         img {
           width: 100%;
@@ -41,9 +43,6 @@ export default class TwoCol extends Component {
         @media screen and (min-width: 1024px) {
           width: ${props.leftWidth};
         }
-        div {
-          padding: 50px;
-        }
       `;
       return (
         <Column>
@@ -56,9 +55,6 @@ export default class TwoCol extends Component {
         position: relative;
         @media screen and (min-width: 1024px) {
           width: ${props.leftWidth};
-        }
-        div {
-          padding: 50px;
         }
       `;
       return (
@@ -81,6 +77,7 @@ export default class TwoCol extends Component {
         background-position: center;
         @media screen and (min-width: 1024px) {
           width: ${props.rightWidth};
+          padding-left: 50px;
         }
       `;
       return <Column />;
@@ -89,6 +86,7 @@ export default class TwoCol extends Component {
         width: 100%;
         @media screen and (min-width: 1024px) {
           width: 50%;
+          padding-left: 50px;
         }
         img {
           width: 100%;
@@ -107,9 +105,6 @@ export default class TwoCol extends Component {
         @media screen and (min-width: 1024px) {
           width: 50%;
         }
-        div {
-          padding: 50px;
-        }
       `;
       return (
         <Column>
@@ -122,7 +117,6 @@ export default class TwoCol extends Component {
         position: relative;
         @media screen and (min-width: 1024px) {
           width: ${props.rightWidth};
-          padding: 50px;
         }
       `;
       return <Column>{this.props.children}</Column>;
