@@ -7,7 +7,7 @@ export default class Hero extends Component {
     const props = this.props;
 
     const VimeoWrapper = styled.div`
-      background-color: black;
+      background-color: ${props.videoBgColor};
       position: absolute;
       top: 0;
       left: 0;
