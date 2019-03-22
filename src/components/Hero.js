@@ -34,7 +34,6 @@ export default class Hero extends Component {
       z-index: 0;
       width: 100%;
       height: 100%;
-      background-attachment: fixed;
       background-size: cover;
       background-position: ${props.bgPosition};
       ${props.centerChildren
