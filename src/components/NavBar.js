@@ -221,11 +221,17 @@ export default class NavBar extends Component {
       return (
         <Nav>
           <div className="left">
-            <Logo>
-              <Link to="/">
-                <img className={props.logoClass} src={props.logo} alt="Logo" />
-              </Link>
-            </Logo>
+            {props.logo && (
+              <Logo>
+                <Link to="/">
+                  <img
+                    className={props.logoClass}
+                    src={props.logo}
+                    alt="Logo"
+                  />
+                </Link>
+              </Logo>
+            )}
           </div>
           <div style={{ display: "flex" }} className="right">
             <Menu>{this.renderLinks()}</Menu>
