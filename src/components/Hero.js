@@ -59,7 +59,7 @@ export default class Hero extends Component {
 
     if (props.type === "video") {
       return (
-        <VimeoWrapper>
+        <VimeoWrapper className={props.videoClass}>
           {props.overlay && <Overlay />}
           <iframe
             title="Iframe"
@@ -78,13 +78,13 @@ export default class Hero extends Component {
       );
     } else if (props.type === "image") {
       return (
-        <ImageWrapper>
+        <ImageWrapper className={props.imageClass}>
           {props.overlay && <Overlay />} {this.renderCopy()}
         </ImageWrapper>
       );
     } else if (props.type === "color") {
       return (
-        <ColorWrapper>
+        <ColorWrapper className={props.colorClass}>
           {props.overlay && <Overlay />} {this.renderCopy()}
         </ColorWrapper>
       );
