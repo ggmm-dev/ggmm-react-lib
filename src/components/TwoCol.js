@@ -72,6 +72,7 @@ export default class TwoCol extends Component {
         position: relative;
         background-image: url(${props.rightContent});
         background-size: cover;
+        background-attachment: ${props.fixed ? "fixed" : ""};
         height: ${props.imageHeight};
         width: 100%;
         background-position: center;
@@ -102,8 +103,9 @@ export default class TwoCol extends Component {
         width: 100%;
         position: relative;
         height: ${this.props.height};
+        padding: ${this.props.rightPadding};
         @media screen and (min-width: 1024px) {
-          width: 50%;
+          width: ${props.rightWidth};
         }
       `;
       return (
@@ -132,6 +134,7 @@ export default class TwoCol extends Component {
       `,
       Wrapper = styled.div`
         align-items: ${this.props.alignItems};
+        justify-content: ${this.props.justify};
         display: flex;
         margin: 0 auto;
         flex-wrap: wrap;
