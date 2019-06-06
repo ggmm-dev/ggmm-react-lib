@@ -111,6 +111,28 @@ export default class NavBar extends Component {
     );
   }
 
+  componentDidMount(){
+    console.log('yo')
+    document.addEventListener("scroll", () => {
+      const header = document.getElementById("header");
+      const scrollPosY = window.pageYOffset | document.body.scrollTop;
+      if (header) {
+        if (scrollPosY > 100) {
+          header.className = "vanish";
+        } else if (scrollPosY <= 100) {
+          header.className = "default";
+        }
+        window.onscroll = function(e) {
+          if (this.oldScroll > this.scrollY && scrollPosY > 10) {
+            header.className = "nav-down";
+          }
+
+          this.oldScroll = this.scrollY;
+        };
+      }
+    });
+  }
+
   renderSocial() {
     const props = this.props,
       SocialIcon = styled.div`
@@ -246,7 +268,7 @@ export default class NavBar extends Component {
       );
     }
     if (props.type === "center") {
-      return (
+      return ( 
         <Nav>
           <div className="left">
             <Logo>
@@ -295,6 +317,7 @@ export default class NavBar extends Component {
       background: ${this.props.backgroundColor};
       z-index: 999;
       height: ${this.props.height};
+      
       .fa-bars {
         padding: ${this.props.padding};
         color: ${this.props.navColor};
@@ -324,7 +347,7 @@ export default class NavBar extends Component {
       }
     `;
     return (
-      <Container className={this.props.customClass}>
+      <Container id="header" className={this.state.isTop ? this.props.customClass : "vanish " + this.props.customClass}>
         {this.renderNav()} {this.renderMobile()}
       </Container>
     );
